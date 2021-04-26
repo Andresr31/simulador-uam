@@ -26,3 +26,7 @@ Route::get('prueba', function () {
         'message'=>'Hola mundo te saludo desde laravel'
     ],200); 
 });
+
+Route::get('rules/{room_id}','Api\RulesController@getRules');
+
+Route::post('simulation', 'Api\SimulationController@registerScore');
