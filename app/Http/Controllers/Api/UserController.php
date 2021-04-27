@@ -31,8 +31,10 @@ class UserController extends Controller
                 return response()->json([
                     'res'=>true,
                     'token'=>$token,
+                    'user'=>$user,
                     'message'=>'success'
                 ],200);
+
             }else{
                 return response()->json([
                     'res'=>false,
