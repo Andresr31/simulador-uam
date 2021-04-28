@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHospitalRoomBiomedicalEquipmentsTable extends Migration
+class CreateEquipmentRoomRequiredsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateHospitalRoomBiomedicalEquipmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('hospital_room-_biomedical_equipments', function (Blueprint $table) {
+        Schema::create('equipment_room_requireds', function (Blueprint $table) {
             $table->id();
-            $table->string('feedback');
-            $table->boolean('required');
+            $table->string('feedback')->nullable();
+            $table->boolean('required')->nullable();
+            $table->boolean('optional')->nullable();
             $table->timestamps();
 
             //Foregn Keys
@@ -35,6 +36,6 @@ class CreateHospitalRoomBiomedicalEquipmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hospital_room-_biomedical_equipments');
+        Schema::dropIfExists('equipment_room_requireds');
     }
 }

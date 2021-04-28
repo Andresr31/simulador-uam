@@ -16,9 +16,9 @@ class CreateBiomedicalEquipmentTable extends Migration
         Schema::create('biomedical_equipment', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
-            $table->boolean('maintenance');
-            $table->double('maintenance_periodicity');
+            $table->text('description')->nullable();
+            $table->boolean('maintenance_plan');
+            $table->string('risk_classification')->nullable();
             $table->string('image')->default('images/default/no-image.png');
             $table->timestamps();
 

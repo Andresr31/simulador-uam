@@ -20,6 +20,6 @@ class BiomedicalEquipment extends Model
     }
 
     public function hospitalRooms(){
-        return $this->hasMany('App\HospitalaryRoom-BiomedicalEquipments');
+        return $this->hasMany('App\EquipmentRoomRequired');
     }
 }

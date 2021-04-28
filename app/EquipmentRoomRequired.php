@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HospitalRoomBiomedicalEquipments extends Model
+class EquipmentRoomRequired extends Model
 {
     protected $fillable = [
         'room_id', 
@@ -20,5 +20,4 @@ class HospitalRoomBiomedicalEquipments extends Model
     public function biomedicalEquipment(){
         return $this->belongsTo('App\BiomedicalEquipment');
     }
-    
 }

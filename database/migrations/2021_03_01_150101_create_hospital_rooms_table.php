@@ -16,7 +16,7 @@ class CreateHospitalRoomsTable extends Migration
         Schema::create('hospital_rooms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->boolean('mesh');
             $table->timestamps();
         });

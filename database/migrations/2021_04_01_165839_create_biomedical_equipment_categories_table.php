@@ -16,7 +16,7 @@ class CreateBiomedicalEquipmentCategoriesTable extends Migration
         Schema::create('biomedical_equipment_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             
             $table->timestamps();
         });

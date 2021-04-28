@@ -16,7 +16,7 @@ class CreateWallsTable extends Migration
         Schema::create('walls', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('image')->default('images/default/no-image.png');
             $table->timestamps();
 
