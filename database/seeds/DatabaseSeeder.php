@@ -1,5 +1,6 @@
 <?php
 
+use App\BiomedicalEquipment;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,5 +13,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(UserSeeder::class);
+        $this->call(BiomedicalEquipmentCategorySeeder::class);
+        $this->call(HospitalRoomSeeder::class);
+        $this->call(BiomedicalEquipmentSeeder::class);
     }
 }
