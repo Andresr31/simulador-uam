@@ -41,6 +41,12 @@
                             <span class="menu-collapsed font-weight-bold">Inicio</span>
                         </div>
                     </a>
+                    <a class="list-group-item list-group-item-action" href="{{ route('biomedical-equipments.index') }}">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <i class="fas fa-laptop-medical mr-2"></i>
+                            <span class="menu-collapsed font-weight-bold">Equipos biomédicos</span>
+                        </div>
+                    </a>
                     <div class="accordion" id="sidebarAcordion">
 
                     </div>
@@ -88,8 +94,9 @@
                                             <a class="dropdown-item" href="{{ route('home') }}">
                                                 {{ __('Home') }}
                                             </a>
-                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                         document.getElementById('logout-form').submit();">
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                                             document.getElementById('logout-form').submit();">
                                                 {{ __('Logout') }}
                                             </a>
 

@@ -14,18 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::post('login', 'Api\UserController@login');
 
-Route::get('prueba', function () {
-    return response()->json([
-        'res'=>true,
-        'message'=>'Hola mundo te saludo desde laravel'
-    ],200); 
-});
+// Route::get('prueba', function () {
+//     return response()->json([
+//         'res'=>true,
+//         'message'=>'Hola mundo te saludo desde laravel'
+//     ],200); 
+// });
 
 Route::get('rules/{room_id}','Api\RulesController@getRules');
 

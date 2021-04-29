@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(BiomedicalEquipmentCategorySeeder::class);
         $this->call(HospitalRoomSeeder::class);
+        $this->call(RiskFactorSeeder::class);
         $this->call(BiomedicalEquipmentSeeder::class);
     }
 }
