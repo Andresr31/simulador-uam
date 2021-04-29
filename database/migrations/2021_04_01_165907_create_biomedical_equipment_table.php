@@ -17,13 +17,14 @@ class CreateBiomedicalEquipmentTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->boolean('maintenance_plan');
-            $table->string('risk_classification')->nullable();
+            $table->boolean('maintenance_plan')->default(false);
+            $table->unsignedBigInteger('risk_factor_id')->nullable();
+            $table->unsignedBigInteger('category_id');
             $table->string('image')->default('images/default/no-image.png');
             $table->timestamps();
 
             //Foregn Keys
-            $table->unsignedBigInteger('category_id');
+            $table->foreign('risk_factor_id')->references('id')->on('risk_factors');
             $table->foreign('category_id')->references('id')->on('biomedical_equipment_categories');
         });
     }

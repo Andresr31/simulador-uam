@@ -51,3 +51,26 @@
 .list-group-flush > .list-group-item {
     border-width: 1px !important;
 }
+
+/* boton create */
+.float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    z-index: 2;
+}
+
+.my-float {
+    margin-top: 15px;
+}
+
+/* select image */
+.img-preview{
+    display: none;
+}
+
+.img-preview2{
+    display: flex;
+}

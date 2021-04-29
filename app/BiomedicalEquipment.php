@@ -7,19 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 class BiomedicalEquipment extends Model
 {
     protected $fillable = [
-        'name', 
+        'name',
         'description',
-        'maintenance',
-        'maintenance_periodicity',
+        'maintenance_plan',
+        'risk_factor_id',
         'category_id',
         'image'
     ];
 
-    public function category(){
-        return $this->belongsTo('App\Category');
+    public function category()
+    {
+        return $this->belongsTo('App\BiomedicalEquipmentCategory');
     }
 
-    public function hospitalRooms(){
+    public function hospitalRooms()
+    {
         return $this->hasMany('App\EquipmentRoomRequired');
+    }
+
+    public function riskFactor()
+    {
+        return $this->belongsTo('App\RiskFactor');
     }
 }
