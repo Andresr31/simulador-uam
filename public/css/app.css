@@ -50,6 +50,26 @@ html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+.title {
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #012970;
+  font-family: "Nunito", sans-serif;
+  margin-top: 3px;
+}
+
+.logo {
+  line-height: 0;
+}
+
+.logo img {
+  max-height: 40px;
+  margin-right: 6px;
+}
+
+
+
 
 article,
 aside,
