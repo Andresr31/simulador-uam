@@ -4,13 +4,13 @@
     <main class="container-fluid">
         <!-- Page Content -->
         <div class="my-3">
-            <button class="btn btn-light bg-white shadow-sm px-3 d-inline align-middle mr-2" id="menu-toggle"
+            <button class="btn btn-light bg-white shadow-sm px-3 d-inline align-middle mr-2 ml-auto" id="menu-toggle"
                 onclick="toggledMenu()">
                 <i class="fa fa-bars"></i>
             </button>
             <h3 class="d-inline align-middle">Equipos biomédicos</h3>
             <hr />
-
+            <div class="my-2 pb-1 text-right"><a class="btn btn-simulador" href=""> <i class="fa fa-list"></i> Categorías</a></div>
             <div>
                 <div class="card bg-white rounded">
                     <div class="card-body">
