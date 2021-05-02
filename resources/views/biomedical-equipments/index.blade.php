@@ -10,7 +10,7 @@
             </button>
             <h3 class="d-inline align-middle">Equipos biomédicos</h3>
             <hr />
-            <div class="my-2 pb-1 text-right"><a class="btn btn-simulador" href=""> <i class="fa fa-list"></i> Categorías</a></div>
+            <div class="my-2 pb-1 text-right"><a class="btn btn-simulador" href="{{route('biomedical-equipments-category.index')}}"> <i class="fa fa-list"></i> Categorías</a></div>
             <div>
                 <div class="card bg-white rounded">
                     <div class="card-body">

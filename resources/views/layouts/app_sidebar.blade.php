@@ -51,6 +51,21 @@
                             <span class="menu-collapsed font-weight-bold">Equipos biomédicos</span>
                         </div>
                     </a>
+
+                    <a class="list-group-item list-group-item-action" href="{{ route('biomedical-equipments.index') }}">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <i class="fas fa-square mr-2"></i>
+                            <span class="menu-collapsed font-weight-bold">Pisos</span>
+                        </div>
+                    </a>
+
+                    <a class="list-group-item list-group-item-action" href="{{ route('biomedical-equipments.index') }}">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <i class="fas fa-home mr-2"></i>
+                            <span class="menu-collapsed font-weight-bold">Techos</span>
+                        </div>
+                    </a>
+
                     <div class="accordion" id="sidebarAcordion">
 
                     </div>
@@ -156,6 +171,16 @@
                     confirmButtonText: 'Aceptar'
                 });
             @endif
+
+            @if (session('message_error'))
+                Swal.fire({
+                    title: 'Error',
+                    text: '{{ session('message_error') }}',
+                    icon: 'error',
+                    confirmButtonColor: '#E10404',
+                    confirmButtonText: 'Aceptar'
+                });
+            @endif
             /* - - -*/
             @if (session('error'))
                 Swal.fire({
@@ -167,6 +192,24 @@
                   timer: 2500
                 });
             @endif
+
+            $('.btn-delete').click(function(event) {
+                Swal.fire({
+                    title: 'Esta usted seguro ?',
+                    text: 'Desea eliminar este registro',
+                    icon: 'error',
+                    showCancelButton: true,
+                    cancelButtonColor: '#d0211c',
+                    cancelButtonText: 'Cancelar',
+                    confirmButtonColor: '#1e5f74',
+                    confirmButtonText: 'Aceptar',  
+                }).then((result) => {
+                    
+                    if(result.value) {
+                        $(this).parent().submit();
+                    }
+                });
+            });
             
         });
     </script>

@@ -1,5 +1,6 @@
 <?php
 
+use App\BiomedicalEquipmentCategory;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +22,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::resource('/biomedical-equipments', BiomedicalEquipmentController::class);
+
+    Route::resources([
+        'biomedical-equipments-category'       => 'BiomedicalEquipmentCategoryController',
+    ]);
+    
 });

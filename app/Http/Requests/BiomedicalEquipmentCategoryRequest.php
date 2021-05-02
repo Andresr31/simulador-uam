@@ -26,14 +26,14 @@ class BiomedicalEquipmentCategoryRequest extends FormRequest
         if ($this->method() == 'PUT') {
             // Edit Form
             return [
-                'name'        => 'required|unique:categories,name,'.$this->id,
+                'name'        => 'required'.$this->id,
                 'description' => 'required',
                 // 'image'       => 'max:1000',
             ];
         } else {
             // Create Form
             return [
-                'name'        => 'required|unique:categories',
+                'name'        => 'required|unique:biomedical_equipment_categories',
                 'description' => 'required',
                 // 'image'       => 'required|image|max:1000',
             ];

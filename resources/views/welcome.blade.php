@@ -199,11 +199,11 @@
         </section>
     </main>
 
-    <div class="container">
-        <div class="copyright">
-            &copy; Copyright <strong><span>UAM</span></strong>. All Rights Reserved
+    <div class="container text-center py-4">
+        <div class="copyright d-inline ml-auto">
+            &copy; Copyright <strong><span>UAM</span></strong>. All Rights Reserved   -    
         </div>
-        <div class="credits">
+        <div class="credits mr-auto d-inline">
             Diseñada por Semillero de Ingeniería de Software
         </div>
     </div>
