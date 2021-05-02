@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
     <script src="{{ asset('js/scripts.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -21,14 +21,18 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/fontawesome-all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/owl.theme.default.min.css') }}" rel="stylesheet">
 </head>
 
 <body>
     <div id="app">
         <div class="d-flex" id="wrapper">
-            <div class="border-right bg-white shadow-sm" id="sidebar-wrapper">
+            <div class="border-right bg-white shadow-sm " id="sidebar-wrapper">
                 <div class="sidebar-heading align-content-center text-center">
-                    <h4>{{ Auth::user()->fullname }}</h4>
+                    <h6><strong>{{ Auth::user()->fullname }}</strong></h6>
                     <a class="nav-link p-0 active exact-active" href="#">
                         Perfil
                     </a>
@@ -53,10 +57,11 @@
                 </div>
             </div>
             <div id="page-content-wrapper">
-                <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+                <nav class="navbar navbar-expand-md navbar-dark bg-simulador shadow-sm">
                     <div class="container">
-                        <a class="navbar-brand" href="{{ url('/') }}">
-                            {{ config('app.name', 'Laravel') }}
+                        <a class="navbar-brand logo d-flex align-items-center" href="{{ url('/') }}">
+                            <img src="{{ asset('img/welcome/logo.png') }}"> 
+                            <span>SimuladorUAM</span>
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -115,6 +120,57 @@
             </div>
         </div>
     </div>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2@9.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                responsive:{
+                    0:{
+                        items: 1
+                    },
+                    600:{
+                        items: 2
+                    },
+                    1000:{
+                        items: 3
+                    }
+                }
+            });
+            /* - - -*/
+            @if (session('message'))
+                Swal.fire({
+                    title: 'Felicitaciones',
+                    text: '{{ session('message') }}',
+                    icon: 'success',
+                    confirmButtonColor: '#1e5f74',
+                    confirmButtonText: 'Aceptar'
+                });
+            @endif
+            /* - - -*/
+            @if (session('error'))
+                Swal.fire({
+                  position: 'top-end',
+                  icon: 'error',
+                  title: 'Acceso Denegado',
+                  text: '{{ session('error') }}',
+                  showConfirmButton: false,
+                  timer: 2500
+                });
+            @endif
+            
+        });
+    </script>
+
 </body>
 
 </html>

@@ -17,6 +17,7 @@ class CreateHospitalRoomsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
+            $table->string('image')->default('images/default/no-image.png');
             $table->boolean('mesh');
             $table->timestamps();
         });
