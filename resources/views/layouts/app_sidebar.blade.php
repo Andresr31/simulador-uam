@@ -59,7 +59,7 @@
                         </div>
                     </a>
 
-                    <a class="list-group-item list-group-item-action" href="{{ route('biomedical-equipments.index') }}">
+                    <a class="list-group-item list-group-item-action" href="{{ route('celling.index') }}">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <i class="fas fa-home mr-2"></i>
                             <span class="menu-collapsed font-weight-bold">Techos</span>
