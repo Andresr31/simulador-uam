@@ -10,19 +10,21 @@ class HospitalRoom extends Model
         'name', 
         'description',
         'mesh',
-        
+        'floor_id',
+        'celling_id',
+        'wall_id'
     ];
 
-    public function floors(){
-        return $this->hasMany('App\Floor');
+    public function floor(){
+        return $this->belongsTo('App\Floor');
     }
 
-    public function walls(){
-        return $this->hasMany('App\Wall');
+    public function wall(){
+        return $this->belongsTo('App\Wall');
     }
 
-    public function cellings(){
-        return $this->hasMany('App\Celling');
+    public function celling(){
+        return $this->belongsTo('App\Celling');
     }
 
     public function biomedicalEquipments(){

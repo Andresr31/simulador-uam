@@ -19,6 +19,18 @@ class CreateHospitalRoomsTable extends Migration
             $table->text('description')->nullable();
             $table->string('image')->default('images/default/no-image.png');
             $table->boolean('mesh');
+            
+
+            //Foregn Keys
+            $table->unsignedBigInteger('floor_id');
+            $table->foreign('floor_id')->references('id')->on('floors');
+
+            $table->unsignedBigInteger('celling_id');
+            $table->foreign('celling_id')->references('id')->on('cellings');
+
+            $table->unsignedBigInteger('wall_id');
+            $table->foreign('wall_id')->references('id')->on('walls');
+
             $table->timestamps();
         });
     }
