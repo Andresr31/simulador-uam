@@ -58,7 +58,7 @@
                         </div>
                     </a>
 
-                    <a class="list-group-item list-group-item-action" href="{{ route('biomedical-equipments.index') }}">
+                    <a class="list-group-item list-group-item-action" href="{{ route('floors.index') }}">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <i class="fas fa-square mr-2"></i>
                             <span class="menu-collapsed font-weight-bold">Pisos</span>
@@ -201,7 +201,7 @@
 
             $('.btn-delete').click(function(event) {
                 Swal.fire({
-                    title: 'Esta usted seguro ?',
+                    title: 'Esta usted seguro?',
                     text: 'Desea eliminar este registro',
                     icon: 'error',
                     showCancelButton: true,

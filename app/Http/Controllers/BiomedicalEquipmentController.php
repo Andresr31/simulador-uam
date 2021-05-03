@@ -25,7 +25,7 @@ class BiomedicalEquipmentController extends Controller
             $dt = Carbon::parse($equipment->created_at);
             $equipment->created = $dt->toDateTimeString();
         }
-        return view("biomedical-equipments.index", compact("biomedialEquipments"));
+        return view("elements.biomedical-equipments.index", compact("biomedialEquipments"));
     }
 
     /**
@@ -42,7 +42,7 @@ class BiomedicalEquipmentController extends Controller
 
         $riskFactors = RiskFactor::all();
         $categories = BiomedicalEquipmentCategory::all();
-        return view("biomedical-equipments.create", compact("riskFactors", "categories"));
+        return view("elements.biomedical-equipments.create", compact("riskFactors", "categories"));
     }
 
     /**
@@ -87,7 +87,7 @@ class BiomedicalEquipmentController extends Controller
             return redirect()->route('home')
                 ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
 
-        return view("biomedical-equipments.show", compact("biomedicalEquipment"));
+        return view("elements.biomedical-equipments.show", compact("biomedicalEquipment"));
     }
 
     /**
@@ -105,7 +105,7 @@ class BiomedicalEquipmentController extends Controller
 
         $riskFactors = RiskFactor::all();
         $categories = BiomedicalEquipmentCategory::all();
-        return view("biomedical-equipments.edit", compact("riskFactors", "categories", "biomedicalEquipment"));
+        return view("elements.biomedical-equipments.edit", compact("riskFactors", "categories", "biomedicalEquipment"));
     }
 
     /**

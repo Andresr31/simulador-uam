@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
         'biomedical-equipments-category' => BiomedicalEquipmentCategoryController::class,
         'celling' => CellingController::class,
         'biomedical-equipments' => BiomedicalEquipmentController::class,
-        'users' => UsersController::class
+        'users' => UsersController::class,
+        'floors' => FloorController::class
     ]);
 });

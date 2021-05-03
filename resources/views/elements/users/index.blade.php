@@ -4,13 +4,13 @@
     <main class="container-fluid">
         <!-- Page Content -->
         <div class="my-3">
-            <button class="btn btn-light bg-white shadow-sm px-3 d-inline align-middle mr-2 ml-auto" id="menu-toggle"
+            <button class="btn btn-light bg-white shadow-sm px-3 d-inline align-middle mr-2" id="menu-toggle"
                 onclick="toggledMenu()">
                 <i class="fa fa-bars"></i>
             </button>
-            <h3 class="d-inline align-middle">Equipos biomédicos</h3>
+            <h3 class="d-inline align-middle">Usuarios</h3>
             <hr />
-            <div class="my-2 pb-1 text-right"><a class="btn btn-simulador" href="{{route('biomedical-equipments-category.index')}}"> <i class="fa fa-list"></i> Categorías</a></div>
+
             <div>
                 <div class="card bg-white rounded">
                     <div class="card-body">
@@ -20,43 +20,45 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Nombre</th>
-                                        <th>Descripción</th>
-                                        <th>Plan de mantenimiento</th>
+                                        <th>Email</th>
+                                        <th>Tipo de usuario</th>
                                         <th>Creado en</th>
                                         <th class="text-muted">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($biomedialEquipments as $equipment)
+                                    @foreach ($users as $user)
                                         <tr>
-                                            <td>{{ $equipment->id }}</td>
-                                            <td>{{ $equipment->name }}</td>
-                                            <td>{{ $equipment->description }}</td>
-                                            <td>{{ $equipment->maintenance_plan }}</td>
-                                            <td>{{ $equipment->created }}</td>
+                                            <td>{{ $user->id }}</td>
+                                            <td>{{ $user->fullname }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->roles->pluck('name')[0] }}</td>
+                                            <td>{{ $user->created }}</td>
                                             <td>
                                                 <a class="btn btn-link d-inline p-0 mr-2 text-decoration-none"
                                                     data-toggle="tooltip" data-placement="top" title="Editar"
-                                                    href="{{ route('biomedical-equipments.edit', $equipment) }}">
+                                                    href="{{ route('users.edit', $user) }}">
                                                     <span>
                                                         <i class="fas fa-pen" aria-hidden="true"></i>
                                                     </span>
                                                 </a>
                                                 <a class="btn btn-link d-inline p-0 mr-2 text-decoration-none"
                                                     data-toggle="tooltip" data-placement="top" title="ver"
-                                                    href="{{ route('biomedical-equipments.show', $equipment) }}">
+                                                    href="{{ route('users.show', $user) }}">
                                                     <span>
                                                         <i class="fas fa-eye" aria-hidden="true"></i>
                                                     </span>
                                                 </a>
-                                                <button class="btn btn-link d-inline p-0 mr-2 text-decoration-none"
-                                                    data-toggle="modal" data-placement="top" title="Eliminar"
-                                                    data-target="#delete-modal"
-                                                    data-route="{{ route('biomedical-equipments.destroy', $equipment->id) }}">
-                                                    <span>
-                                                        <i class="fas fa-trash-alt" aria-hidden="true"></i>
-                                                    </span>
-                                                </button>
+                                                <form action="{{route('users.destroy',$user->id)}}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="button" class="btn btn-link d-inline p-0 mr-2 text-decoration-none btn-delete"
+                                                        data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                        <span>
+                                                            <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                                                        </span>
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -68,10 +70,9 @@
             </div>
         </div>
     </main>
-    @include('biomedical-equipments.destroy')
 @endsection
 
-<a class="float btn btn-primary rounded-pill float-right" href="{{ route('biomedical-equipments.create') }}"
-    role="button" data-toggle="tooltip" data-placement="top" title="Crear equipo biomédico">
+<a class="float btn btn-primary rounded-pill float-right" href="{{ route('users.create') }}" role="button"
+    data-toggle="tooltip" data-placement="top" title="Crear usuario">
     <i class="fas fa-plus my-float"></i>
 </a>

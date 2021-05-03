@@ -28,7 +28,7 @@ class UsersController extends Controller
             $dt = Carbon::parse($user->created_at);
             $user->created = $dt->toDateTimeString();
         }
-        return view('users.index', compact('users'));
+        return view('elements.users.index', compact('users'));
     }
 
     /**
@@ -47,7 +47,7 @@ class UsersController extends Controller
             return false;
         });
         $careers = Career::all();
-        return view('users.create', compact("roles", "careers"));
+        return view('elements.users.create', compact("roles", "careers"));
     }
 
     /**
