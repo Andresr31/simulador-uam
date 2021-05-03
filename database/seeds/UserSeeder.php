@@ -42,8 +42,8 @@ class UserSeeder extends Seeder
         $student = User::create([
             'fullname' => 'Estudiante',
             'email' => 'estudiante@gmail.com',
-            'career' => 'Ingenieria de sistemas',
-            'semester' => '6',
+            'career_id' => 1,
+            'semester' => "6",
             'password' => Hash::make('12345678')
         ]);
         $student->assignRole('student');

@@ -47,6 +47,12 @@
                             <span class="menu-collapsed font-weight-bold">Equipos biomédicos</span>
                         </div>
                     </a>
+                    <a class="list-group-item list-group-item-action" href="{{ route('users.index') }}">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <i class="fas fa-users mr-2"></i>
+                            <span class="menu-collapsed font-weight-bold">Usuarios</span>
+                        </div>
+                    </a>
                     <div class="accordion" id="sidebarAcordion">
 
                     </div>

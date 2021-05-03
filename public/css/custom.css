@@ -74,3 +74,11 @@
 .img-preview2{
     display: flex;
 }
+
+.case-student{
+    display: none;
+}
+
+.case-student2{
+    display: flex;
+}

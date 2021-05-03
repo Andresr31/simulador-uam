@@ -29,4 +29,27 @@ $(function () {
         };
         reader.readAsDataURL(this.files[0]);
     });
+
+    $('#delete-modal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var route = button.data('route');
+        var modal = $(this)
+
+        modal.find('#form-delete').attr('action', `${route}`);
+    })
+
+    if($('#role').val() == 3){
+        $(".form-student").addClass("case-student2");
+        $(".form-student").removeClass("case-student");        
+    }
+
+    $('#role').change(function () {
+        if($('#role').val() == 3){
+            $(".form-student").addClass("case-student2");
+            $(".form-student").removeClass("case-student");
+        }else{
+            $(".form-student").addClass("case-student");
+            $(".form-student").removeClass("case-student2");
+        }
+    });
 });

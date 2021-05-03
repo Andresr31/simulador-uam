@@ -4,13 +4,15 @@
     <main class="container-fluid">
         <!-- Page Content -->
         <div class="my-3">
-            <button class="btn btn-light bg-white shadow-sm px-3 d-inline align-middle mr-2" id="menu-toggle" onclick="toggledMenu()">
+            <button class="btn btn-light bg-white shadow-sm px-3 d-inline align-middle mr-2" id="menu-toggle"
+                onclick="toggledMenu()">
                 <i class="fa fa-bars"></i>
             </button>
             <h3 class="d-inline align-middle">Inicio</h3>
             <hr />
 
             <div>
+                @include('layouts.alerts')
                 <p>
                     The starting state of the menu will appear collapsed on smaller screens,
                     and will appear non-collapsed on larger screens. When toggled using the
