@@ -80,7 +80,7 @@ class UsersController extends Controller
             return redirect()->route('home')
                 ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
 
-        return view("users.show", compact("user"));
+        return view("elements.users.show", compact("user"));
     }
 
     /**
@@ -100,7 +100,7 @@ class UsersController extends Controller
             return false;
         });
         $careers = Career::all();
-        return view("users.edit", compact("roles", "careers", "user"));
+        return view("elements.users.edit", compact("roles", "careers", "user"));
     }
 
     /**

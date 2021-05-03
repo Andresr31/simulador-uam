@@ -57,21 +57,24 @@
                             <span class="menu-collapsed font-weight-bold">Usuarios</span>
                         </div>
                     </a>
-
+                    <a class="list-group-item list-group-item-action" href="{{ route('walls.index') }}">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <i class="fas fa-border-all mr-2"></i>
+                            <span class="menu-collapsed font-weight-bold">Paredes</span>
+                        </div>
+                    </a>
                     <a class="list-group-item list-group-item-action" href="{{ route('floors.index') }}">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <i class="fas fa-square mr-2"></i>
                             <span class="menu-collapsed font-weight-bold">Pisos</span>
                         </div>
                     </a>
-
                     <a class="list-group-item list-group-item-action" href="{{ route('celling.index') }}">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <i class="fas fa-home mr-2"></i>
                             <span class="menu-collapsed font-weight-bold">Techos</span>
                         </div>
                     </a>
-
                     <div class="accordion" id="sidebarAcordion">
 
                     </div>

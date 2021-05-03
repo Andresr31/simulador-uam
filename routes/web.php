@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
         'celling' => CellingController::class,
         'biomedical-equipments' => BiomedicalEquipmentController::class,
         'users' => UsersController::class,
-        'floors' => FloorController::class
+        'floors' => FloorController::class,
+        'walls' => WallController::class
     ]);
 });
