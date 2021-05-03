@@ -8,7 +8,7 @@
                 onclick="toggledMenu()">
                 <i class="fa fa-bars"></i>
             </button>
-            <h3 class="d-inline align-middle">Categorias de Equipos biomédicos</h3>
+            <h3 class="d-inline align-middle">Pisos</h3>
             <hr />
             
             <div>
@@ -26,28 +26,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($categories as $category)
+                                    @foreach ($floors as $floor)
                                         <tr>
-                                            <td>{{ $category->id }}</td>
-                                            <td>{{ $category->name }}</td>
-                                            <td>{{ $category->description }}</td>
-                                            <td>{{ $category->created_at }}</td>
+                                            <td>{{ $floor->id }}</td>
+                                            <td>{{ $floor->name }}</td>
+                                            <td>{{ $floor->description }}</td>
+                                            <td>{{ $floor->created_at }}</td>
                                             <td>
                                                 <a class="btn btn-link d-inline p-0 mr-2 text-decoration-none"
                                                     data-toggle="tooltip" data-placement="top" title="Editar"
-                                                    href="{{ route('biomedical-equipments-category.edit', $category->id) }}">
+                                                    href="{{ route('floors.edit', $floor->id) }}">
                                                     <span>
                                                         <i class="fas fa-pen" aria-hidden="true"></i>
                                                     </span>
                                                 </a>
                                                 <a class="btn btn-link d-inline p-0 mr-2 text-decoration-none"
                                                     data-toggle="tooltip" data-placement="top" title="ver"
-                                                    href="{{ route('biomedical-equipments-category.show', $category->id) }}">
+                                                    href="{{ route('floors.show', $floor->id) }}">
                                                     <span>
                                                         <i class="fas fa-eye" aria-hidden="true"></i>
                                                     </span>
                                                 </a>
-                                                <form action="{{route('biomedical-equipments-category.destroy',$category->id)}}" method="POST" class="d-inline">
+                                                <form action="{{route('floors.destroy',$floor->id)}}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="button" class="btn btn-link d-inline p-0 mr-2 text-decoration-none btn-delete"
@@ -71,7 +71,7 @@
     </main>
 @endsection
 
-<a class="float btn btn-primary rounded-pill float-right" href="{{ route('biomedical-equipments-category.create') }}"
+<a class="float btn btn-primary rounded-pill float-right" href="{{ route('floors.create') }}"
     role="button" data-toggle="tooltip" data-placement="top" title="Crear equipo biomédico">
     <i class="fas fa-plus my-float"></i>
 </a>

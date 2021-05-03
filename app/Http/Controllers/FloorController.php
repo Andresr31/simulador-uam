@@ -46,7 +46,6 @@ class FloorController extends Controller
         $floor = new Floor();
         $floor->name  = $request->name;
         $floor->description= $request->description;
-        $floor->enviroment_id = $request->enviroment_id;
         
         if ($request->hasFile('image')) {
             $file = time().'.'.$request->image->extension();
@@ -54,7 +53,7 @@ class FloorController extends Controller
             $floor->image = 'img/elements/floors/'.$file;
         }
         if($floor->save()) {
-            return redirect('floor.index')->with('message', 'El piso '.$floor->name.' fue creado con Exito!');
+            return redirect()->route('floors.index')->with('message', 'El piso '.$floor->name.' fue creado con Exito!');
         }
     }
 
@@ -64,9 +63,15 @@ class FloorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Floor $floor)
+    public function show($floor_id)
     {
-        return view('elements.floor.show')->with('floor',$floor);
+        $floor = Floor::find($floor_id);
+        if($floor){
+            return view('elements.floor.show')->with('floor',$floor);
+        }else{
+            return redirect()->route('floors.index')->with('message_error', 'Techo no encontrado');
+        }
+
     }
 
     /**
@@ -75,9 +80,15 @@ class FloorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Floor $floor)
+    public function edit($floor_id)
     {
-        return view('elements.floor.show')->with('floor',$floor);
+        $floor = Floor::find($floor_id);
+        if($floor){
+            return view('elements.floor.edit')->with('floor',$floor);
+        }else{
+            return redirect()->route('floors.index')->with('message_error', 'Techo no encontrado');
+        }
+        
     }
 
     /**
@@ -87,11 +98,12 @@ class FloorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(FloorRequest $request, Floor $floor)
+    public function update(FloorRequest $request, $floor_id)
     {
+        $floor = Floor::find($floor_id);
         $floor->name  = $request->name;
         $floor->description= $request->description;
-        $floor->enviroment_id = $request->enviroment_id;
+        // $floor->enviroment_id = $request->enviroment_id;
         
         if ($request->hasFile('image')) {
             $file = time().'.'.$request->image->extension();
@@ -99,7 +111,7 @@ class FloorController extends Controller
             $floor->image = 'img/elements/floors/'.$file;
         }
         if($floor->save()) {
-            return redirect('floor.index')->with('message', 'El piso '.$floor->name.' fue modificado con Exito!');
+            return redirect()->route('floors.index')->with('message', 'El piso '.$floor->name.' fue modificado con Exito!');
         }
     }
 
@@ -109,10 +121,11 @@ class FloorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Floor $floor)
+    public function destroy($floor_id)
     {
+        $floor = Floor::find($floor_id);
         if($floor->delete()) {
-            return redirect()->route('floor.index')->with('message', 'El piso: '.$floor->name.' fue eliminado con Exito!');
+            return redirect()->route('floors.index')->with('message', 'El piso: '.$floor->name.' fue eliminado con Exito!');
         }
     }
 }

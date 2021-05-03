@@ -8,7 +8,7 @@
                 onclick="toggledMenu()">
                 <i class="fa fa-bars"></i>
             </button>
-            <h3 class="d-inline align-middle">Editar categoría</h3>
+            <h3 class="d-inline align-middle">Editar piso</h3>
             <hr />
 
             <div>
@@ -16,10 +16,10 @@
                     <div class="col-lg-7 col-md-8">
                         <div class="tab-pane fade show active" id="list-0" role="tabpanel" aria-labelledby="list-0-list">
                             <div class="card shadow bg-white rounded">
-                                <div class="card-header text-center"> <h5>Información de la categoría</h5></div>
+                                <div class="card-header text-center"> <h5>Información del piso</h5></div>
                                 <div class="card-body">
                                     <form method="POST"
-                                        action="{{ route('biomedical-equipments-category.update', $category->id) }}">
+                                        action="{{ route('floors.update', $floor->id) }}"enctype="multipart/form-data">
                                         @method('PUT')
                                         @csrf
                                         <div class="form-group row">
@@ -27,7 +27,7 @@
                                                 <label for="name">Nombre</label>
                                                 <input id="name" type="text"
                                                     class="form-control @error('name') is-invalid @enderror" name="name"
-                                                    value="{{ old('name', $category->name) }}"
+                                                    value="{{ old('name', $floor->name) }}"
                                                     placeholder="Nombre" autocomplete="name" required autofocus />
 
                                                 @error('name')
@@ -42,7 +42,7 @@
                                                 <label for="description">Descripción</label>
                                                 <textarea class="form-control @error('description') is-invalid @enderror"
                                                     id="description" rows="3" name="description" placeholder="Descripción"
-                                                    required>{{ old('description', $category->description) }}</textarea>
+                                                    required>{{ old('description', $floor->description) }}</textarea>
 
                                                 @error('description')
                                                     <span class="invalid-feedback" role="alert">
@@ -52,7 +52,7 @@
                                             </div>
                                         </div>
                                        
-                                        {{-- <div class="form-group row">
+                                        <div class="form-group row">
                                             
                                             <div class="col-12">
                                                 <label for="image">Imagen</label>
@@ -68,15 +68,15 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                        </div> --}}
-                                        {{-- <div class="form-group row">
+                                        </div>
+                                        <div class="form-group row">
                                             <div class="col-12">
                                                 <div class="mt-3 img-preview">
-                                                    <img src="{{ $category->image }}" id="preview"
+                                                    <img src="{{ asset($floor->image) }}" id="preview"
                                                         class="img-thumbnail">
                                                 </div>
                                             </div>
-                                        </div> --}}
+                                        </div>
                                         <div class="form-group row mb-0">
                                             <div class="col-md-12">
                                                 <button type="submit" class="btn btn-primary btn-block">

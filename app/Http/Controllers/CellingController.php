@@ -44,7 +44,7 @@ class CellingController extends Controller
         $celling = new Celling();
         $celling->name  = $request->name;
         $celling->description= $request->description;
-        $celling->enviroment_id = $request->enviroment_id;
+        // $celling->enviroment_id = $request->enviroment_id;
         
         if ($request->hasFile('image')) {
             $file = time().'.'.$request->image->extension();
@@ -98,6 +98,7 @@ class CellingController extends Controller
      */
     public function update(CellingRequest $request, $celling_id)
     {
+        
         $celling = Celling::find($celling_id);
         $celling->name  = $request->name;
         $celling->description= $request->description;

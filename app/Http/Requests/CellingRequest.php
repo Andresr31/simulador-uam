@@ -26,9 +26,9 @@ class CellingRequest extends FormRequest
         if ($this->method() == 'PUT') {
             // Edit Form
             return [
-                'name'        => 'required,'.$this->id,
+                'name'        => 'required',
                 'description' => 'required',
-                
+                'image'       => 'image',
             ];
         } else {
             // Create Form

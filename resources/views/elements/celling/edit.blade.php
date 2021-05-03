@@ -19,7 +19,7 @@
                                 <div class="card-header text-center"> <h5>Información del techo</h5></div>
                                 <div class="card-body">
                                     <form method="POST"
-                                        action="{{ route('celling.update', $celling->id) }}">
+                                        action="{{ route('celling.update', $celling->id) }}" enctype="multipart/form-data">
                                         @method('PUT')
                                         @csrf
                                         <div class="form-group row">
@@ -52,7 +52,7 @@
                                             </div>
                                         </div>
                                        
-                                        {{-- <div class="form-group row">
+                                        <div class="form-group row">
                                             
                                             <div class="col-12">
                                                 <label for="image">Imagen</label>
@@ -68,15 +68,15 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                        </div> --}}
-                                        {{-- <div class="form-group row">
+                                        </div>
+                                        <div class="form-group row">
                                             <div class="col-12">
-                                                <div class="mt-3 img-preview">
-                                                    <img src="{{ $celling->image }}" id="preview"
+                                                <div class="mt-3 img-preview justify-content-center">
+                                                    <img src="{{ asset($celling->image )}}" id="preview"
                                                         class="img-thumbnail">
                                                 </div>
                                             </div>
-                                        </div> --}}
+                                        </div>
                                         <div class="form-group row mb-0">
                                             <div class="col-md-12">
                                                 <button type="submit" class="btn btn-primary btn-block">
