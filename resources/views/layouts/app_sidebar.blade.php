@@ -39,37 +39,39 @@
                 </div>
 
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action" href="{{ route('home') }}">
+                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'home' ? 'active' : '' }}"
+                        href="{{ route('home') }}">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <i class="fas fa-home mr-2"></i>
                             <span class="menu-collapsed font-weight-bold">Inicio</span>
                         </div>
                     </a>
-                    <a class="list-group-item list-group-item-action" href="{{ route('biomedical-equipments.index') }}">
+                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'biomedical-equipments.index' || Route::currentRouteName() == 'biomedical-equipments.create' || Route::currentRouteName() == 'biomedical-equipments.edit' || Route::currentRouteName() == 'biomedical-equipments.show' ? 'active' : '' }}"
+                        href="{{ route('biomedical-equipments.index') }}">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <i class="fas fa-laptop-medical mr-2"></i>
                             <span class="menu-collapsed font-weight-bold">Equipos biomédicos</span>
                         </div>
                     </a>
-                    <a class="list-group-item list-group-item-action" href="{{ route('users.index') }}">
+                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'users.index' || Route::currentRouteName() == 'users.create' || Route::currentRouteName() == 'users.edit' || Route::currentRouteName() == 'users.show' ? 'active' : '' }}" href="{{ route('users.index') }}">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <i class="fas fa-users mr-2"></i>
                             <span class="menu-collapsed font-weight-bold">Usuarios</span>
                         </div>
                     </a>
-                    <a class="list-group-item list-group-item-action" href="{{ route('walls.index') }}">
+                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'walls.index' || Route::currentRouteName() == 'walls.create' || Route::currentRouteName() == 'walls.edit' || Route::currentRouteName() == 'walls.show' ? 'active' : '' }}" href="{{ route('walls.index') }}">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <i class="fas fa-border-all mr-2"></i>
                             <span class="menu-collapsed font-weight-bold">Paredes</span>
                         </div>
                     </a>
-                    <a class="list-group-item list-group-item-action" href="{{ route('floors.index') }}">
+                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'floors.index' || Route::currentRouteName() == 'floors.create' || Route::currentRouteName() == 'floors.edit' || Route::currentRouteName() == 'floors.show' ? 'active' : '' }}" href="{{ route('floors.index') }}">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <i class="fas fa-square mr-2"></i>
                             <span class="menu-collapsed font-weight-bold">Pisos</span>
                         </div>
                     </a>
-                    <a class="list-group-item list-group-item-action" href="{{ route('celling.index') }}">
+                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'celling.index' || Route::currentRouteName() == 'celling.create' || Route::currentRouteName() == 'celling.edit' || Route::currentRouteName() == 'celling.show' ? 'active' : '' }}" href="{{ route('celling.index') }}">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <i class="fas fa-home mr-2"></i>
                             <span class="menu-collapsed font-weight-bold">Techos</span>
@@ -84,7 +86,7 @@
                 <nav class="navbar navbar-expand-md navbar-dark bg-simulador shadow-sm">
                     <div class="container">
                         <a class="navbar-brand logo d-flex align-items-center" href="{{ url('/') }}">
-                            <img src="{{ asset('img/welcome/logo.png') }}"> 
+                            <img src="{{ asset('img/welcome/logo.png') }}">
                             <span>SimuladorUAM</span>
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -125,7 +127,7 @@
                                             </a>
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
-                                                                             document.getElementById('logout-form').submit();">
+                                                                                 document.getElementById('logout-form').submit();">
                                                 {{ __('Logout') }}
                                             </a>
 
@@ -153,19 +155,19 @@
 
     <script>
         $(document).ready(function() {
-            
+
             $('.owl-carousel').owlCarousel({
                 loop: true,
                 margin: 10,
                 nav: true,
-                responsive:{
-                    0:{
+                responsive: {
+                    0: {
                         items: 1
                     },
-                    600:{
+                    600: {
                         items: 2
                     },
-                    1000:{
+                    1000: {
                         items: 3
                     }
                 }
@@ -173,32 +175,32 @@
             /* - - -*/
             @if (session('message'))
                 Swal.fire({
-                    title: 'Felicitaciones',
-                    text: '{{ session('message') }}',
-                    icon: 'success',
-                    confirmButtonColor: '#1e5f74',
-                    confirmButtonText: 'Aceptar'
+                title: 'Felicitaciones',
+                text: '{{ session('message') }}',
+                icon: 'success',
+                confirmButtonColor: '#1e5f74',
+                confirmButtonText: 'Aceptar'
                 });
             @endif
 
             @if (session('message_error'))
                 Swal.fire({
-                    title: 'Error',
-                    text: '{{ session('message_error') }}',
-                    icon: 'error',
-                    confirmButtonColor: '#E10404',
-                    confirmButtonText: 'Aceptar'
+                title: 'Error',
+                text: '{{ session('message_error') }}',
+                icon: 'error',
+                confirmButtonColor: '#E10404',
+                confirmButtonText: 'Aceptar'
                 });
             @endif
             /* - - -*/
             @if (session('error'))
                 Swal.fire({
-                  position: 'top-end',
-                  icon: 'error',
-                  title: 'Acceso Denegado',
-                  text: '{{ session('error') }}',
-                  showConfirmButton: false,
-                  timer: 2500
+                position: 'top-end',
+                icon: 'error',
+                title: 'Acceso Denegado',
+                text: '{{ session('error') }}',
+                showConfirmButton: false,
+                timer: 2500
                 });
             @endif
 
@@ -211,16 +213,17 @@
                     cancelButtonColor: '#d0211c',
                     cancelButtonText: 'Cancelar',
                     confirmButtonColor: '#1e5f74',
-                    confirmButtonText: 'Aceptar',  
+                    confirmButtonText: 'Aceptar',
                 }).then((result) => {
-                    
-                    if(result.value) {
+
+                    if (result.value) {
                         $(this).parent().submit();
                     }
                 });
             });
-            
+
         });
+
     </script>
 
 </body>
