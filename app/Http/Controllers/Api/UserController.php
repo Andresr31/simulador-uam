@@ -27,7 +27,7 @@ class UserController extends Controller
             if($user && Hash::check($request->password, $user->password)){
                 
                 $token = $user->createToken('simulador')->accessToken;
-
+                
                 return response()->json([
                     'res'=>true,
                     'token'=>$token,

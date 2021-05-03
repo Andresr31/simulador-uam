@@ -10,10 +10,9 @@ class Celling extends Model
         'name', 
         'description',
         'image',
-        'enviroment_id'
     ];
 
-    public function hospitalRoom(){
-        return $this->belongsTo('App\HospitalRoom');
+    public function hospitalRooms(){
+        return $this->hasMany('App\HospitalRoom');
     }
 }

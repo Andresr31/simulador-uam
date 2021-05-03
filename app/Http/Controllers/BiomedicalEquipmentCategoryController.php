@@ -43,6 +43,7 @@ class BiomedicalEquipmentCategoryController extends Controller
      */
     public function store(BiomedicalEquipmentCategoryRequest $request)
     {
+        
         $category = new BiomedicalEquipmentCategory();
         $category->name  = $request->name;
         $category->description= $request->description;
@@ -53,7 +54,7 @@ class BiomedicalEquipmentCategoryController extends Controller
         //     $category->image = 'imgs/'.$file;
         // }
         if($category->save()) {
-            return redirect('categoryBE.index')->with('message', 'La Categoria: '.$category->name.' fue Adicionado con Exito!');
+            return redirect()->route('biomedical-equipments-category.index')->with('message', 'La Categoria: '.$category->name.' fue Adicionado con Exito!');
         }
 
     }
@@ -64,9 +65,15 @@ class BiomedicalEquipmentCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(BiomedicalEquipmentCategory $category)
+    public function show($category_id)
     {
-        return view('elements.biomedicalEquipmentCategory.show')->with('category',$category); 
+        $category = BiomedicalEquipmentCategory::find($category_id);
+        if($category){
+            return view('elements.biomedicalEquipmentCategory.show')->with('category',$category);
+        }else{
+            return redirect()->route('biomedical-equipments-category.index')->with('message_error', 'Categoría no encontrada');
+        }
+         
     }
 
     /**
@@ -75,9 +82,15 @@ class BiomedicalEquipmentCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(BiomedicalEquipmentCategory $category)
+    public function edit($category_id)
     {
-        return view('elements.biomedicalEquipmentCategory.edit')->with('category',$category);  
+        $category = BiomedicalEquipmentCategory::find($category_id);
+        if($category){
+            return view('elements.biomedicalEquipmentCategory.edit')->with('category',$category);  
+        }else{
+            return redirect()->route('biomedical-equipments-category.index')->with('message_error', 'Categoría no encontrada');
+        }
+        
     }
 
     /**
@@ -87,8 +100,9 @@ class BiomedicalEquipmentCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BiomedicalEquipmentCategoryRequest $request, BiomedicalEquipmentCategory $category)
+    public function update(BiomedicalEquipmentCategoryRequest $request, $category_id)
     {
+        $category = BiomedicalEquipmentCategory::find($category_id);
         $category->name  = $request->name;
         $category->description= $request->description;
         
@@ -98,7 +112,7 @@ class BiomedicalEquipmentCategoryController extends Controller
         //     $category->image = 'imgs/'.$file;
         // }
         if($category->save()) {
-            return redirect('categoryBE.index')->with('message', 'La Categoria: '.$category->name.' fue Adicionado con Exito!');
+            return redirect()->route('biomedical-equipments-category.index')->with('message', 'La Categoria: '.$category->name.' fue actualizada con Exito!');
         }
     }
 
@@ -108,10 +122,11 @@ class BiomedicalEquipmentCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BiomedicalEquipmentCategory $category)
+    public function destroy($category_id)
     {
+        $category = BiomedicalEquipmentCategory::find($category_id);
         if($category->delete()) {
-            return redirect()->route('categoryBE.index')->with('message', 'La Categoria: '.$category->name.' fue eliminada con Exito!');
+            return redirect()->route('biomedical-equipments-category.index')->with('message', 'La Categoria: '.$category->name.' fue eliminada con Exito!');
         }
     }
 }

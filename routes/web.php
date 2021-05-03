@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +20,10 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::resource('/biomedical-equipments', BiomedicalEquipmentController::class);
-    Route::resource('/users', UsersController::class);
+    Route::resources([
+        'biomedical-equipments-category' => BiomedicalEquipmentCategoryController::class,
+        'celling' => CellingController::class,
+        'biomedical-equipments' => BiomedicalEquipmentController::class,
+        'users' => UsersController::class
+    ]);
 });

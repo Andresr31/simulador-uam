@@ -20,9 +20,9 @@ class CreateWallsTable extends Migration
             $table->string('image')->default('images/default/no-image.png');
             $table->timestamps();
 
-            //Foregn Keys
-            $table->unsignedBigInteger('enviroment_id');
-            $table->foreign('enviroment_id')->references('id')->on('hospital_rooms');
+            // //Foregn Keys
+            // $table->unsignedBigInteger('enviroment_id');
+            // $table->foreign('enviroment_id')->references('id')->on('hospital_rooms');
         });
     }
 

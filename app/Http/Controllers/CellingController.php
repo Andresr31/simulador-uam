@@ -52,7 +52,7 @@ class CellingController extends Controller
             $celling->image = 'img/elements/cellings/'.$file;
         }
         if($celling->save()) {
-            return redirect('celling.index')->with('message', 'El techo: '.$celling->name.' fue creado con Exito!');
+            return redirect()->route('celling.index')->with('message', 'El techo: '.$celling->name.' fue creado con Exito!');
         }
     }
 
@@ -62,9 +62,15 @@ class CellingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Celling $celling)
+    public function show($celling_id)
     {
-        return view('elements.celling.show')->with('celling',$celling);
+        $celling = Celling::find($celling_id);
+        if($celling){
+            return view('elements.celling.show')->with('celling',$celling);
+        }else{
+            return redirect()->route('celling.index')->with('message_error', 'Techo no encontrado');
+        }
+        
     }
 
     /**
@@ -73,9 +79,14 @@ class CellingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Celling $celling)
+    public function edit($celling_id)
     {
-        return view('elements.celling.edit')->with('celling',$celling);
+        $celling = Celling::find($celling_id);
+        if($celling){
+            return view('elements.celling.edit')->with('celling',$celling);
+        }else{
+            return redirect()->route('celling.index')->with('message_error', 'Techo no encontrado');
+        }
     }
 
     /**
@@ -85,8 +96,9 @@ class CellingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CellingRequest $request, Celling $celling)
+    public function update(CellingRequest $request, $celling_id)
     {
+        $celling = Celling::find($celling_id);
         $celling->name  = $request->name;
         $celling->description= $request->description;
         
@@ -96,7 +108,7 @@ class CellingController extends Controller
             $celling->image = 'img/elements/cellings/'.$file;
         }
         if($celling->save()) {
-            return redirect('celling.index')->with('message', 'El techo: '.$celling->name.' fue modificado con Exito!');
+            return redirect()->route('celling.index')->with('message', 'El techo: '.$celling->name.' fue modificado con Exito!');
         }
     }
 
@@ -106,8 +118,9 @@ class CellingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Celling $celling)
+    public function destroy($celling_id)
     {
+        $celling = Celling::find($celling_id);
         if($celling->delete()) {
             return redirect()->route('celling.index')->with('message', 'El techo: '.$celling->name.' fue eliminado con Exito!');
         }

@@ -10,7 +10,6 @@ class Wall extends Model
         'name', 
         'description',
         'image',
-        'enviroment_id'
     ];
 
     public function hospitalRooms(){
