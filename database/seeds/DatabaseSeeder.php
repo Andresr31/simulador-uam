@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(HospitalRoomSeeder::class);
         $this->call(RiskFactorSeeder::class);
         $this->call(BiomedicalEquipmentSeeder::class);
+        $this->call(RulesSeeder::class);
     }
 }

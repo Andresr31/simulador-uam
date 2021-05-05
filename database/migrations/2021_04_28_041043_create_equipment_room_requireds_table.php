@@ -15,17 +15,18 @@ class CreateEquipmentRoomRequiredsTable extends Migration
     {
         Schema::create('equipment_room_requireds', function (Blueprint $table) {
             $table->id();
-            $table->string('feedback')->nullable();
-            $table->boolean('required')->nullable();
-            $table->boolean('optional')->nullable();
-            $table->timestamps();
-
+            
+            $table->enum('required',['TRUE','FALSE','OPTIONAL']);
             //Foregn Keys
             $table->unsignedBigInteger('enviroment_id');
             $table->foreign('enviroment_id')->references('id')->on('hospital_rooms');
 
             $table->unsignedBigInteger('equipment_id');
             $table->foreign('equipment_id')->references('id')->on('biomedical_equipment');
+
+            $table->string('feedback')->nullable();
+            $table->timestamps();
+
         });
     }
 
