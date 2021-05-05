@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Celling;
 use App\Http\Requests\CellingRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CellingController extends Controller
 {
@@ -19,6 +20,10 @@ class CellingController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
         $cellings = Celling::paginate(10);
         return view('elements.celling.index')->with('cellings', $cellings);
     }
@@ -30,6 +35,10 @@ class CellingController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
         return view('elements.celling.create');
     }
 
@@ -41,6 +50,10 @@ class CellingController extends Controller
      */
     public function store(CellingRequest $request)
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
         $celling = new Celling();
         $celling->name  = $request->name;
         $celling->description= $request->description;
@@ -64,6 +77,10 @@ class CellingController extends Controller
      */
     public function show($celling_id)
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
         $celling = Celling::find($celling_id);
         if($celling){
             return view('elements.celling.show')->with('celling',$celling);
@@ -81,6 +98,10 @@ class CellingController extends Controller
      */
     public function edit($celling_id)
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
         $celling = Celling::find($celling_id);
         if($celling){
             return view('elements.celling.edit')->with('celling',$celling);
@@ -98,6 +119,10 @@ class CellingController extends Controller
      */
     public function update(CellingRequest $request, $celling_id)
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
         
         $celling = Celling::find($celling_id);
         $celling->name  = $request->name;
@@ -121,6 +146,11 @@ class CellingController extends Controller
      */
     public function destroy($celling_id)
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                
         $celling = Celling::find($celling_id);
         if($celling->delete()) {
             return redirect()->route('celling.index')->with('message', 'El techo: '.$celling->name.' fue eliminado con Exito!');
