@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Celling;
+use App\Floor;
 use App\Http\Controllers\Controller;
+use App\Wall;
 use Illuminate\Http\Request;
 
 class SimulationController extends Controller
@@ -15,6 +18,23 @@ class SimulationController extends Controller
             'message'=>'Hola mundo te saludo desde laravel'
         ],200); 
         
+    }
+
+    public function getPre(){
+
+        $floors = Floor::all();
+        $walls = Wall::all();
+        $cellings = Celling::all();
+
+        $pre = array("floors"=>$floors,"walls"=>$walls,"cellings"=>$cellings);
+        
+        return response()->json([
+            'data'=> $pre,
+            'res'=>true,
+            'message'=>'success'
+        ],200);
 
     }
+
+    
 }

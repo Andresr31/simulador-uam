@@ -30,3 +30,5 @@ Route::post('login', 'Api\UserController@login');
 Route::get('rules/{room_id}','Api\RulesController@getRules');
 
 Route::post('simulation', 'Api\SimulationController@registerScore');
+
+Route::get('getPre','Api\SimulationController@getPre');
