@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\BiomedicalEquipment;
 use App\HospitalRoom;
 use App\Http\Controllers\Controller;
+use App\RiskFactor;
 use App\Rule;
 use App\User;
 use Illuminate\Http\Request;
@@ -13,19 +15,34 @@ class RulesController extends Controller
     public function getRules($room_id){
         
         $room = HospitalRoom::find($room_id);
+        
         if($room){
-            $test = new Rule();
+            $rule = new Rule();
             $band = false;
             if($room->mesh){
                 $band = true;
             }
-            $test->pre = array("floor"=>$room->floor->id,"wall"=>$room->wall->id,"celling"=>$room->floor->id,"mesh"=>$band);
-            $test->simulation = array("1"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"], "2"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"], "3"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"], "4"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"], "5"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"], "6"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"], "7"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"], "8"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"], "9"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"10"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"11"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"12"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"13"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"14"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"15"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"16"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"17"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"18"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"19"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"20"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"21"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"22"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"23"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"24"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"25"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"26"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"27"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"28"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"29"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"30"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"31"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"32"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"33"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"34"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"35"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"36"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"37"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"38"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"39"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"40"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"41"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"42"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"43"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"44"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"45"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"46"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"47"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"48"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"49"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"],"50"=>["required"=>"TRUE", "feedback"=>"Se equivocó paila","risk"=>"IA"]);
+            $rule->pre = array("floor"=>$room->floor->id,"wall"=>$room->wall->id,"celling"=>$room->floor->id,"mesh"=>$band);
+            
+            foreach ($room->biomedicalEquipments as $r) {
+                $biomedicalEquipment = BiomedicalEquipment::find($r->biomedical_equipment_id);
+                $risk_factor = RiskFactor::find($biomedicalEquipment->risk_factor_id);
+                if($risk_factor){
+                    $r->risk = $risk_factor->name;
+                }else{
+                    $r->risk = null;
+                }
+                
+            }
+            
+            $rule->simulation = $room->biomedicalEquipments;
+            
             return response()->json([
-                'data'=> $test,
+                'data'=> $rule,
                 'res'=>true,
-                'message'=>'succes'
+                'message'=>'success'
             ],200);
+
         }else{
             return response()->json([
                 'res'=>false,

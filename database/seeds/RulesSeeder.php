@@ -24,7 +24,7 @@ class RulesSeeder extends Seeder
                 $required = 'OPTIONAL';
             }   
             
-            EquipmentRoomRequired::create(['required' => $required, 'enviroment_id' => 1, 'equipment_id' => $i, 'feedback' => 'Respuesta incorrecta el requerimiento del equipo era: '.$required]);
+            EquipmentRoomRequired::create(['required' => $required, 'hospital_room_id' => 1, 'biomedical_equipment_id' => $i, 'feedback' => 'Respuesta incorrecta el requerimiento del equipo era: '.$required]);
 
         }
 
@@ -39,7 +39,7 @@ class RulesSeeder extends Seeder
                 $required = 'OPTIONAL';
             }   
             
-            EquipmentRoomRequired::create(['required' => $required, 'enviroment_id' => 2, 'equipment_id' => $i, 'feedback' => 'Respuesta incorrecta el requerimiento del equipo era: '.$required]);
+            EquipmentRoomRequired::create(['required' => $required, 'hospital_room_id' => 2, 'biomedical_equipment_id' => $i, 'feedback' => 'Respuesta incorrecta el requerimiento del equipo era: '.$required]);
 
         }
 
@@ -54,7 +54,7 @@ class RulesSeeder extends Seeder
                 $required = 'OPTIONAL';
             }   
             
-            EquipmentRoomRequired::create(['required' => $required, 'enviroment_id' => 3, 'equipment_id' => $i, 'feedback' => 'Respuesta incorrecta el requerimiento del equipo era: '.$required]);
+            EquipmentRoomRequired::create(['required' => $required, 'hospital_room_id' => 3, 'biomedical_equipment_id' => $i, 'feedback' => 'Respuesta incorrecta el requerimiento del equipo era: '.$required]);
 
         }
         

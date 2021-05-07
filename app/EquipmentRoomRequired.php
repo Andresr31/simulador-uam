@@ -7,10 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class EquipmentRoomRequired extends Model
 {
     protected $fillable = [
-        'room_id', 
-        'enviroment_id',
+        'biomedical_equipment_id', 
+        'hospital_room_id',
         'required',
         'feedback'
+    ];
+
+    protected $hidden = [
+        'id','hospital_room_id', 'created_at','updated_at',
     ];
 
     public function hospitalRoom(){
