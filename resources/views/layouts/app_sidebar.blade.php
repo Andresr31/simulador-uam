@@ -48,7 +48,21 @@
                     </a>
 
                     @if (Auth::user()->hasRole('admin'))
-                            
+                         
+                        <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'users.index' || Route::currentRouteName() == 'users.create' || Route::currentRouteName() == 'users.edit' || Route::currentRouteName() == 'users.show' ? 'active' : '' }}" href="{{ route('users.index') }}">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <i class="fas fa-users mr-2"></i>
+                                <span class="menu-collapsed font-weight-bold">Usuarios</span>
+                            </div>
+                        </a>
+
+                        <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'hospital-rooms.index' || Route::currentRouteName() == 'hospital-rooms.create' || Route::currentRouteName() == 'hospital-rooms.edit' || Route::currentRouteName() == 'hospital-rooms.show' ? 'active' : '' }}" href="{{ route('hospital-rooms.index') }}">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <i class="fas fa-person-booth mr-2"></i>
+                                <span class="menu-collapsed font-weight-bold">Ambientes hospitalarios</span>
+                            </div>
+                        </a>
+
                         <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'biomedical-equipments.index' || Route::currentRouteName() == 'biomedical-equipments.create' || Route::currentRouteName() == 'biomedical-equipments.edit' || Route::currentRouteName() == 'biomedical-equipments.show' ? 'active' : '' }}"
                             href="{{ route('biomedical-equipments.index') }}">
                             <div class="d-flex w-100 justify-content-start align-items-center">
@@ -56,13 +70,8 @@
                                 <span class="menu-collapsed font-weight-bold">Equipos biomédicos</span>
                             </div>
                         </a>
-                        <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'users.index' || Route::currentRouteName() == 'users.create' || Route::currentRouteName() == 'users.edit' || Route::currentRouteName() == 'users.show' ? 'active' : '' }}" href="{{ route('users.index') }}">
-                            <div class="d-flex w-100 justify-content-start align-items-center">
-                                <i class="fas fa-users mr-2"></i>
-                                <span class="menu-collapsed font-weight-bold">Usuarios</span>
-                            </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'walls.index' || Route::currentRouteName() == 'walls.create' || Route::currentRouteName() == 'walls.edit' || Route::currentRouteName() == 'walls.show' ? 'active' : '' }}" href="{{ route('walls.index') }}">
+
+                        {{-- <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'walls.index' || Route::currentRouteName() == 'walls.create' || Route::currentRouteName() == 'walls.edit' || Route::currentRouteName() == 'walls.show' ? 'active' : '' }}" href="{{ route('walls.index') }}">
                             <div class="d-flex w-100 justify-content-start align-items-center">
                                 <i class="fas fa-border-all mr-2"></i>
                                 <span class="menu-collapsed font-weight-bold">Paredes</span>
@@ -79,13 +88,8 @@
                                 <i class="fas fa-home mr-2"></i>
                                 <span class="menu-collapsed font-weight-bold">Techos</span>
                             </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'hospital-rooms.index' || Route::currentRouteName() == 'hospital-rooms.create' || Route::currentRouteName() == 'hospital-rooms.edit' || Route::currentRouteName() == 'hospital-rooms.show' ? 'active' : '' }}" href="{{ route('hospital-rooms.index') }}">
-                            <div class="d-flex w-100 justify-content-start align-items-center">
-                                <i class="fas fa-person-booth mr-2"></i>
-                                <span class="menu-collapsed font-weight-bold">Ambientes hospitalarios</span>
-                            </div>
-                        </a>
+                        </a> --}}
+
                     @endif
                     
                     <div class="accordion" id="sidebarAcordion">

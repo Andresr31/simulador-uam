@@ -11,7 +11,13 @@
             <h3 class="d-inline align-middle">Ambientes hospitalarios</h3>
             <hr />
 
-            <div>
+            <div class=" float-right">
+                <div class="my-2 pb-1 text-right d-inline"><a class="btn btn-simulador" href="{{route('walls.index')}}"> <i class="fa fa-square"></i> Paredes</a></div>
+                <div class="my-2 pb-1 text-right d-inline"><a class="btn btn-simulador" href="{{route('floors.index')}}"> <i class="fa fa-border-all"></i> Pisos</a></div>
+                <div class="my-2 pb-1 text-right d-inline"><a class="btn btn-simulador" href="{{route('celling.index')}}"> <i class="fa fa-home"></i> Techos</a></div>    
+            </div><br> <br>
+
+            <div class="my-3">
                 <div class="card bg-white rounded">
                     <div class="card-body">
                         <div class="table-responsive">
