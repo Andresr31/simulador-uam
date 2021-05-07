@@ -77,6 +77,12 @@
                             <span class="menu-collapsed font-weight-bold">Techos</span>
                         </div>
                     </a>
+                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'hospital-rooms.index' || Route::currentRouteName() == 'hospital-rooms.create' || Route::currentRouteName() == 'hospital-rooms.edit' || Route::currentRouteName() == 'hospital-rooms.show' ? 'active' : '' }}" href="{{ route('hospital-rooms.index') }}">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <i class="fas fa-person-booth mr-2"></i>
+                            <span class="menu-collapsed font-weight-bold">Ambientes hospitalarios</span>
+                        </div>
+                    </a>
                     <div class="accordion" id="sidebarAcordion">
 
                     </div>

@@ -16,7 +16,7 @@
                     <div class="col-lg-7 col-md-8">
                         <div class="tab-pane fade show active" id="list-0" role="tabpanel" aria-labelledby="list-0-list">
                             <div class="card shadow bg-white rounded">
-                                <div class="card-header">Información de la pared</div>
+                                <div class="card-header text-center"><h5>Información de la pared</h5></div>
                                 <div class="card-body">
                                     <form method="POST" action="{{ route('walls.store') }}" enctype="multipart/form-data">
                                         @csrf

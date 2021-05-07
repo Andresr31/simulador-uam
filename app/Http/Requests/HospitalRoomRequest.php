@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FloorRequest extends FormRequest
+class HospitalRoomRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,24 +26,25 @@ class FloorRequest extends FormRequest
         if ($this->method() == 'PUT') {
             // Edit Form
             return [
-                'name'        => 'required'.$this->id,
+                'name'        => 'required',
                 'description' => 'required',
-                // 'image'       => 'image',
+                'mesh' => 'required',
+                'floor_id' => 'required|exists:floors,id',
+                'celling_id' => 'required|exists:cellings,id',
+                'wall_id' => 'required|exists:walls,id',
+                'image' => 'nullable|image',
             ];
         } else {
             // Create Form
             return [
-                'name'        => 'required|unique:floors',
+                'name'        => 'required',
                 'description' => 'required',
-                'image'       => 'required|image',
+                'mesh' => 'required',
+                'floor_id' => 'required|exists:floors,id',
+                'celling_id' => 'required|exists:cellings,id',
+                'wall_id' => 'required|exists:walls,id',
+                'image' => 'required|image',
             ];
         }
-    }
-
-    public function messages() {
-        return [
-            'name.required'        => 'El campo "Nombre" es obligatorio.',
-            'description.required' => 'El campo "Descripción" es obligatorio.'
-        ];
     }
 }
