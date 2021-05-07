@@ -58,6 +58,11 @@ class UsersController extends Controller
      */
     public function store(UserRequest $request)
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+
         $input = $request->all();
         $user = new User();
         $user->fill($input);

@@ -16,7 +16,7 @@
                     <div class="col-lg-7 col-md-8">
                         <div class="tab-pane fade show active" id="list-0" role="tabpanel" aria-labelledby="list-0-list">
                             <div class="card shadow bg-white rounded">
-                                <div class="card-header">Información del usuario</div>
+                                <div class="card-header text-center"><h5>Información del usuario</h5></div>
                                 <div class="card-body">
                                     <form method="POST" action="{{ route('users.update', $user) }}">
                                         @method('PUT')
