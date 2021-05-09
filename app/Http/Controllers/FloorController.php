@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Floor;
 use App\Http\Requests\FloorRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FloorController extends Controller
 {
@@ -21,6 +22,11 @@ class FloorController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+
         $floors = Floor::paginate(10);
         return view('elements.floor.index')->with('floors', $floors);
     }
@@ -32,6 +38,11 @@ class FloorController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+
         return view('elements.floor.create');
     }
 
@@ -43,6 +54,11 @@ class FloorController extends Controller
      */
     public function store(FloorRequest $request)
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+
         $floor = new Floor();
         $floor->name  = $request->name;
         $floor->description= $request->description;
@@ -65,6 +81,11 @@ class FloorController extends Controller
      */
     public function show($floor_id)
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+
         $floor = Floor::find($floor_id);
         if($floor){
             return view('elements.floor.show')->with('floor',$floor);
@@ -82,6 +103,11 @@ class FloorController extends Controller
      */
     public function edit($floor_id)
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+
         $floor = Floor::find($floor_id);
         if($floor){
             return view('elements.floor.edit')->with('floor',$floor);
@@ -100,6 +126,11 @@ class FloorController extends Controller
      */
     public function update(FloorRequest $request, $floor_id)
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                
         $floor = Floor::find($floor_id);
         $floor->name  = $request->name;
         $floor->description= $request->description;
@@ -123,6 +154,11 @@ class FloorController extends Controller
      */
     public function destroy($floor_id)
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                
         $floor = Floor::find($floor_id);
         if($floor->delete()) {
             return redirect()->route('floors.index')->with('message', 'El piso: '.$floor->name.' fue eliminado con Exito!');

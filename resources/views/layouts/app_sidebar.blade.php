@@ -46,43 +46,104 @@
                             <span class="menu-collapsed font-weight-bold">Inicio</span>
                         </div>
                     </a>
-                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'biomedical-equipments.index' || Route::currentRouteName() == 'biomedical-equipments.create' || Route::currentRouteName() == 'biomedical-equipments.edit' || Route::currentRouteName() == 'biomedical-equipments.show' ? 'active' : '' }}"
-                        href="{{ route('biomedical-equipments.index') }}">
+
+                    @if (Auth::user()->hasRole('admin'))
+                         
+                        <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'users.index' || Route::currentRouteName() == 'users.create' || Route::currentRouteName() == 'users.edit' || Route::currentRouteName() == 'users.show' ? 'active' : '' }}" href="{{ route('users.index') }}">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <i class="fas fa-users mr-2"></i>
+                                <span class="menu-collapsed font-weight-bold">Usuarios</span>
+                            </div>
+                        </a>
+
+                        <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'hospital-rooms.index' || Route::currentRouteName() == 'hospital-rooms.create' || Route::currentRouteName() == 'hospital-rooms.edit' || Route::currentRouteName() == 'hospital-rooms.show' ? 'active' : '' }}" href="{{ route('hospital-rooms.index') }}">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <i class="fas fa-person-booth mr-2"></i>
+                                <span class="menu-collapsed font-weight-bold">Ambientes hospitalarios</span>
+                            </div>
+                        </a>
+
+                        <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'biomedical-equipments.index' || Route::currentRouteName() == 'biomedical-equipments.create' || Route::currentRouteName() == 'biomedical-equipments.edit' || Route::currentRouteName() == 'biomedical-equipments.show' ? 'active' : '' }}"
+                            href="{{ route('biomedical-equipments.index') }}">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <i class="fas fa-laptop-medical mr-2"></i>
+                                <span class="menu-collapsed font-weight-bold">Equipos biomédicos</span>
+                            </div>
+                        </a>
+
+                        <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'rules.index' || Route::currentRouteName() == 'rules.create' || Route::currentRouteName() == 'rules.edit' || Route::currentRouteName() == 'rules.show' ? 'active' : '' }}"
+                            href="{{ route('rules.index') }}">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <i class="fas fa-pencil-ruler mr-2"></i>
+                                <span class="menu-collapsed font-weight-bold">Reglas</span>
+                            </div>
+                        </a>
+
+                        {{-- <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'walls.index' || Route::currentRouteName() == 'walls.create' || Route::currentRouteName() == 'walls.edit' || Route::currentRouteName() == 'walls.show' ? 'active' : '' }}" href="{{ route('walls.index') }}">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <i class="fas fa-border-all mr-2"></i>
+                                <span class="menu-collapsed font-weight-bold">Paredes</span>
+                            </div>
+                        </a>
+                        <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'floors.index' || Route::currentRouteName() == 'floors.create' || Route::currentRouteName() == 'floors.edit' || Route::currentRouteName() == 'floors.show' ? 'active' : '' }}" href="{{ route('floors.index') }}">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <i class="fas fa-square mr-2"></i>
+                                <span class="menu-collapsed font-weight-bold">Pisos</span>
+                            </div>
+                        </a>
+                        <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'celling.index' || Route::currentRouteName() == 'celling.create' || Route::currentRouteName() == 'celling.edit' || Route::currentRouteName() == 'celling.show' ? 'active' : '' }}" href="{{ route('celling.index') }}">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <i class="fas fa-home mr-2"></i>
+                                <span class="menu-collapsed font-weight-bold">Techos</span>
+                            </div>
+                        </a> --}}
+
+                    @endif
+
+                    @if (Auth::user()->hasRole('teacher'))
+                        <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'rules.index' || Route::currentRouteName() == 'rules.create' || Route::currentRouteName() == 'rules.edit' || Route::currentRouteName() == 'rules.show' ? 'active' : '' }}"
+                            href="{{ route('users.index') }}">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <i class="fas fa-users mr-2"></i>
+                                <span class="menu-collapsed font-weight-bold">Estudiantes</span>
+                            </div>
+                        </a>
+
+                        <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'rules.index' || Route::currentRouteName() == 'rules.create' || Route::currentRouteName() == 'rules.edit' || Route::currentRouteName() == 'rules.show' ? 'active' : '' }}"
+                            href="{{ route('rules.index') }}">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <i class="fas fa-pencil-ruler mr-2"></i>
+                                <span class="menu-collapsed font-weight-bold">Reglas</span>
+                            </div>
+                        </a>
+                        
+                    @endif
+                    
+                    
+                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'simulations.index' || Route::currentRouteName() == 'simulations.create' || Route::currentRouteName() == 'simulations.edit' || Route::currentRouteName() == 'simulations.show' ? 'active' : '' }}"
+                        href="{{ route('simulations.index') }}">
                         <div class="d-flex w-100 justify-content-start align-items-center">
-                            <i class="fas fa-laptop-medical mr-2"></i>
-                            <span class="menu-collapsed font-weight-bold">Equipos biomédicos</span>
+                            <i class="fas fa-hospital-user mr-2"></i>
+                            <span class="menu-collapsed font-weight-bold">Simulaciones</span>
                         </div>
                     </a>
-                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'users.index' || Route::currentRouteName() == 'users.create' || Route::currentRouteName() == 'users.edit' || Route::currentRouteName() == 'users.show' ? 'active' : '' }}" href="{{ route('users.index') }}">
+
+                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'simulations.index' || Route::currentRouteName() == 'simulations.create' || Route::currentRouteName() == 'simulations.edit' || Route::currentRouteName() == 'simulations.show' ? 'active' : '' }}"
+                        href="{{ route('simulations.index') }}">
                         <div class="d-flex w-100 justify-content-start align-items-center">
-                            <i class="fas fa-users mr-2"></i>
-                            <span class="menu-collapsed font-weight-bold">Usuarios</span>
+                            <i class="fas fa-book mr-2"></i>
+                            <span class="menu-collapsed font-weight-bold">Tarjetas de estudio</span>
                         </div>
                     </a>
-                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'walls.index' || Route::currentRouteName() == 'walls.create' || Route::currentRouteName() == 'walls.edit' || Route::currentRouteName() == 'walls.show' ? 'active' : '' }}" href="{{ route('walls.index') }}">
+
+                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'simulations.index' || Route::currentRouteName() == 'simulations.create' || Route::currentRouteName() == 'simulations.edit' || Route::currentRouteName() == 'simulations.show' ? 'active' : '' }}"
+                        href="{{ route('simulations.index') }}">
                         <div class="d-flex w-100 justify-content-start align-items-center">
-                            <i class="fas fa-border-all mr-2"></i>
-                            <span class="menu-collapsed font-weight-bold">Paredes</span>
+                            <i class="fas fa-dice mr-2"></i>
+                            <span class="menu-collapsed font-weight-bold">Trivias</span>
                         </div>
                     </a>
-                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'floors.index' || Route::currentRouteName() == 'floors.create' || Route::currentRouteName() == 'floors.edit' || Route::currentRouteName() == 'floors.show' ? 'active' : '' }}" href="{{ route('floors.index') }}">
-                        <div class="d-flex w-100 justify-content-start align-items-center">
-                            <i class="fas fa-square mr-2"></i>
-                            <span class="menu-collapsed font-weight-bold">Pisos</span>
-                        </div>
-                    </a>
-                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'celling.index' || Route::currentRouteName() == 'celling.create' || Route::currentRouteName() == 'celling.edit' || Route::currentRouteName() == 'celling.show' ? 'active' : '' }}" href="{{ route('celling.index') }}">
-                        <div class="d-flex w-100 justify-content-start align-items-center">
-                            <i class="fas fa-home mr-2"></i>
-                            <span class="menu-collapsed font-weight-bold">Techos</span>
-                        </div>
-                    </a>
-                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'hospital-rooms.index' || Route::currentRouteName() == 'hospital-rooms.create' || Route::currentRouteName() == 'hospital-rooms.edit' || Route::currentRouteName() == 'hospital-rooms.show' ? 'active' : '' }}" href="{{ route('hospital-rooms.index') }}">
-                        <div class="d-flex w-100 justify-content-start align-items-center">
-                            <i class="fas fa-person-booth mr-2"></i>
-                            <span class="menu-collapsed font-weight-bold">Ambientes hospitalarios</span>
-                        </div>
-                    </a>
+
                     <div class="accordion" id="sidebarAcordion">
 
                     </div>

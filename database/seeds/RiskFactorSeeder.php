@@ -19,5 +19,6 @@ class RiskFactorSeeder extends Seeder
         RiskFactor::create(['name' => 'AIIB', 'description' => 'AIIB']);
         RiskFactor::create(['name' => 'IIB', 'description' => 'IIB']);
         RiskFactor::create(['name' => 'III', 'description' => 'III']);
+        RiskFactor::create(['name' => 'I', 'description' => 'I']);
     }
 }

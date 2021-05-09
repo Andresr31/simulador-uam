@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\BiomedicalEquipmentCategory;
 use App\Http\Requests\BiomedicalEquipmentCategoryRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BiomedicalEquipmentCategoryController extends Controller
 {
@@ -21,6 +22,10 @@ class BiomedicalEquipmentCategoryController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
         $categories = BiomedicalEquipmentCategory::paginate(10);
         return view('elements.biomedicalEquipmentCategory.index')->with('categories', $categories);
     }
@@ -32,6 +37,10 @@ class BiomedicalEquipmentCategoryController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
         return view('elements.biomedicalEquipmentCategory.create');
     }
 
@@ -43,6 +52,10 @@ class BiomedicalEquipmentCategoryController extends Controller
      */
     public function store(BiomedicalEquipmentCategoryRequest $request)
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
         
         $category = new BiomedicalEquipmentCategory();
         $category->name  = $request->name;
@@ -67,6 +80,10 @@ class BiomedicalEquipmentCategoryController extends Controller
      */
     public function show($category_id)
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
         $category = BiomedicalEquipmentCategory::find($category_id);
         if($category){
             return view('elements.biomedicalEquipmentCategory.show')->with('category',$category);
@@ -84,6 +101,10 @@ class BiomedicalEquipmentCategoryController extends Controller
      */
     public function edit($category_id)
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
         $category = BiomedicalEquipmentCategory::find($category_id);
         if($category){
             return view('elements.biomedicalEquipmentCategory.edit')->with('category',$category);  
@@ -102,6 +123,10 @@ class BiomedicalEquipmentCategoryController extends Controller
      */
     public function update(BiomedicalEquipmentCategoryRequest $request, $category_id)
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
         $category = BiomedicalEquipmentCategory::find($category_id);
         $category->name  = $request->name;
         $category->description= $request->description;
@@ -124,6 +149,10 @@ class BiomedicalEquipmentCategoryController extends Controller
      */
     public function destroy($category_id)
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
         $category = BiomedicalEquipmentCategory::find($category_id);
         if($category->delete()) {
             return redirect()->route('biomedical-equipments-category.index')->with('message', 'La Categoria: '.$category->name.' fue eliminada con Exito!');

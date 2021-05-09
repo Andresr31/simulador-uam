@@ -16,14 +16,14 @@ class CreateSimulationsTable extends Migration
         Schema::create('simulations', function (Blueprint $table) {
             $table->id();
 
-            $table->time('time');
+            $table->string('time'); // hh:mm:ss
             $table->integer('numberAttempts');
             
             $table->timestamps();
 
             //Foregn Keys
-            $table->unsignedBigInteger('enviroment_id');
-            $table->foreign('enviroment_id')->references('id')->on('hospital_rooms');
+            $table->unsignedBigInteger('hopital_room_id');
+            $table->foreign('hopital_room_id')->references('id')->on('hospital_rooms');
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
