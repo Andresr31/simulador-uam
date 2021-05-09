@@ -85,7 +85,7 @@
                         <div class="text-center text-lg-start">
                             <a href="{{route('register')}}"
                                 class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                                <span>Registrate</span>
+                                <span>@if(Auth::user()) Inicio @else Registrarse @endif</span>
                                 <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>

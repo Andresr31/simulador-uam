@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,8 @@ Route::group(['middleware' => 'auth'], function () {
         'users' => UsersController::class,
         'floors' => FloorController::class,
         'walls' => WallController::class,
-        'hospital-rooms' => HospitalRoomController::class
+        'hospital-rooms' => HospitalRoomController::class,
+        'rules' => RuleController::class,
+        'simulations' => SimulationController::class
     ]);
 });

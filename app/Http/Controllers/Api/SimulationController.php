@@ -13,7 +13,7 @@ class SimulationController extends Controller
     public function registerScore(Request $request){
         
         return response()->json([
-            'data'=> json_encode($request->all()),
+            'data'=> $request->all(),
             'res'=>true,
             'message'=>'Hola mundo te saludo desde laravel'
         ],200); 

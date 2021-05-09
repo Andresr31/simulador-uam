@@ -17,7 +17,10 @@ class CreateReportsTable extends Migration
             $table->id();
             $table->json('pre');
             $table->json('simulation');
-            $table->json('post');
+            $table->float('score_pre');
+            $table->float('score_simulation');
+            $table->float('score_pos');
+            $table->float('score_total');
             $table->timestamps();
 
         });
