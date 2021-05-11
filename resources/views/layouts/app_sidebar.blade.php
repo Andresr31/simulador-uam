@@ -25,6 +25,11 @@
     <link href="{{ asset('css/fontawesome-all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/owl.theme.default.min.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
+   
+    
+    
 </head>
 
 <body>
@@ -215,13 +220,16 @@
     </div>
 
     <!-- Scripts -->
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/sweetalert2@9.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-
+    <script src="{{ asset('js/select2.min.js') }}"></script>
 
     <script>
         $(document).ready(function() {
+
+            $('#biomedicalEquipment').select2();
 
             $('.owl-carousel').owlCarousel({
                 loop: true,

@@ -32,4 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
         'rules' => RuleController::class,
         'simulations' => SimulationController::class
     ]);
+
+    Route::get('/rules/{hospital_room_id}/create', 'RuleController@create')->name('rules.create');
+    Route::get('/rules/{hospital_room_id}/edit/{rule_id}', 'RuleController@edit')->name('rules.edit');
 });
