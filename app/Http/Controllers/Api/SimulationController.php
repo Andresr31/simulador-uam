@@ -10,31 +10,32 @@ use Illuminate\Http\Request;
 
 class SimulationController extends Controller
 {
-    public function registerScore(Request $request){
-        
-        return response()->json([
-            'data'=> $request->all(),
-            'res'=>true,
-            'message'=>'Hola mundo te saludo desde laravel'
-        ],200); 
-        
+    public function __construct()
+    {
+        $this->middleware('jwt.auth');
     }
 
-    public function getPre(){
+    public function registerScore(Request $request)
+    {
+        return response()->json([
+            'data' => $request->all(),
+            'res' => true,
+            'message' => 'Hola mundo te saludo desde laravel'
+        ], 200);
+    }
 
+    public function getPre()
+    {
         $floors = Floor::all();
         $walls = Wall::all();
         $cellings = Celling::all();
 
-        $pre = array("floors"=>$floors,"walls"=>$walls,"cellings"=>$cellings);
-        
+        $pre = array("floors" => $floors, "walls" => $walls, "cellings" => $cellings);
+
         return response()->json([
-            'data'=> $pre,
-            'res'=>true,
-            'message'=>'success'
-        ],200);
-
+            'data' => $pre,
+            'res' => true,
+            'message' => 'success'
+        ], 200);
     }
-
-    
 }

@@ -13,22 +13,13 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-Route::post('login', 'Api\UserController@login');
-
-// Route::get('prueba', function () {
-//     return response()->json([
-//         'res'=>true,
-//         'message'=>'Hola mundo te saludo desde laravel'
-//     ],200); 
-// });
-
-Route::get('rules/{room_id}','Api\RulesController@getRules');
+Route::group([
+    'middleware' => 'jwt.auth'
+], function () {
+    Route::post('login', 'Api\AuthController@login');
+    Route::post('logout', 'Api\AuthController@logout');
+    Route::get('getPre', 'Api\SimulationController@getPre');
+    Route::get('rules/{room_id}', 'Api\RulesController@getRules');
+});
 
 Route::post('simulation', 'Api\SimulationController@registerScore');
-
-Route::get('getPre','Api\SimulationController@getPre');

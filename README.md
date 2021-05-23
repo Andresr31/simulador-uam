@@ -3,6 +3,7 @@
 - npm install
 - cp .env.example .env
 - php artisan key:generate
+- php artisan jwt:secret
 
 ** Configuracion base de datos
 - CREATE DATABASE simulador;
@@ -11,7 +12,5 @@
 - Set DB_CONNECTION, DB_DATABASE, DB_USERNAME, DB_PASSWORD
 
 ** Configuracion laravel passport
-- php artisan passport:install
 - php artisan cache:clear
 - php artisan config:cache
-- php artisan passport:client --personal
