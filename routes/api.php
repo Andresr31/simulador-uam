@@ -20,6 +20,5 @@ Route::group([
     Route::post('logout', 'Api\AuthController@logout');
     Route::get('getPre', 'Api\SimulationController@getPre');
     Route::get('rules/{room_id}', 'Api\RulesController@getRules');
+    Route::post('simulation', 'Api\SimulationController@registerScore');
 });
-
-Route::post('simulation', 'Api\SimulationController@registerScore');

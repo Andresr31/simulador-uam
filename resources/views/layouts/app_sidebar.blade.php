@@ -133,16 +133,16 @@
                         </div>
                     </a>
 
-                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'simulations.index' || Route::currentRouteName() == 'simulations.create' || Route::currentRouteName() == 'simulations.edit' || Route::currentRouteName() == 'simulations.show' ? 'active' : '' }}"
-                        href="{{ route('simulations.index') }}">
+                    <a class="list-group-item list-group-item-action"
+                        href="#">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <i class="fas fa-book mr-2"></i>
                             <span class="menu-collapsed font-weight-bold">Tarjetas de estudio</span>
                         </div>
                     </a>
 
-                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'simulations.index' || Route::currentRouteName() == 'simulations.create' || Route::currentRouteName() == 'simulations.edit' || Route::currentRouteName() == 'simulations.show' ? 'active' : '' }}"
-                        href="{{ route('simulations.index') }}">
+                    <a class="list-group-item list-group-item-action"
+                        href="#">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <i class="fas fa-dice mr-2"></i>
                             <span class="menu-collapsed font-weight-bold">Trivias</span>

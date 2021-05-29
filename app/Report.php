@@ -9,8 +9,10 @@ class Report extends Model
     protected $fillable = [
         'pre', 
         'simulation',
-        'post',
-        'score'
+        'score_pre',
+        'score_simulation',
+        'score_pos',
+        'score_total'
     ];
 
     public function simulation(){

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class HospitalRoom extends Model
 {
     protected $fillable = [
-        'name', 
+        'name',
         'description',
         'mesh',
         'floor_id',
@@ -15,19 +15,28 @@ class HospitalRoom extends Model
         'wall_id'
     ];
 
-    public function floor(){
+    public function floor()
+    {
         return $this->belongsTo('App\Floor');
     }
 
-    public function wall(){
+    public function wall()
+    {
         return $this->belongsTo('App\Wall');
     }
 
-    public function celling(){
+    public function celling()
+    {
         return $this->belongsTo('App\Celling');
     }
 
-    public function biomedicalEquipments(){
+    public function biomedicalEquipments()
+    {
         return $this->hasMany('App\EquipmentRoomRequired');
+    }
+
+    public function simulations()
+    {
+        return $this->hasMany('App\Simulation');
     }
 }

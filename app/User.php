@@ -42,7 +42,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function simulations()
     {
-        return $this->hasMany('App\Simulation');
+        return $this->hasMany('App\Simulation')->orderBy('created_at', 'desc');
     }
 
     public function career()

@@ -18,8 +18,7 @@ class CreateSimulationsTable extends Migration
 
             $table->string('time'); // hh:mm:ss
             $table->integer('numberAttempts');
-            
-            $table->timestamps();
+            $table->string('image')->nullable();
 
             //Foregn Keys
             $table->unsignedBigInteger('hopital_room_id');
@@ -30,7 +29,8 @@ class CreateSimulationsTable extends Migration
 
             $table->unsignedBigInteger('report_id');
             $table->foreign('report_id')->references('id')->on('reports');
-            
+
+            $table->timestamps();
         });
     }
 
