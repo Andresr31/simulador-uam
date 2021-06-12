@@ -33,6 +33,8 @@ Route::group(['middleware' => 'auth'], function () {
         'studyCards' => StudyCardController::class
     ]);
 
+    Route::resource('rules', RuleController::class, ['except' => ['create', 'edit']]);
+
     Route::get('/rules/{hospital_room_id}/create', 'RuleController@create')->name('rules.create');
     Route::get('/rules/{hospital_room_id}/edit/{rule_id}', 'RuleController@edit')->name('rules.edit');
 });

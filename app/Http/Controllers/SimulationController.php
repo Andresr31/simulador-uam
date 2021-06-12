@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Simulation;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SimulationController extends Controller
 {
@@ -13,7 +16,13 @@ class SimulationController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::User();
+        $simulations = $user->simulations;
+        foreach ($simulations as $simulation) {
+            $dt = Carbon::parse($simulation->created_at);
+            $simulation->created = $dt->toDateTimeString();
+        }
+        return view('elements.simulations.index', compact('simulations'));
     }
 
     /**
@@ -43,9 +52,9 @@ class SimulationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Simulation $simulation)
     {
-        //
+        return view('elements.simulations.show', compact('simulation'));
     }
 
     /**

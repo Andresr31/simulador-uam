@@ -20,34 +20,34 @@ class UserController extends Controller
         
     }
 
-    public function login(Request $request){
+    // public function login(Request $request){
 
-        if($request->email){
-            $user = User::where('email','=',$request->email)->first();
-            if($user && Hash::check($request->password, $user->password)){
+    //     if($request->email){
+    //         $user = User::where('email','=',$request->email)->first();
+    //         if($user && Hash::check($request->password, $user->password)){
                 
-                $token = $user->createToken('simulador')->accessToken;
+    //             $token = $user->createToken('simulador')->accessToken;
                 
-                return response()->json([
-                    'res'=>true,
-                    'token'=>$token,
-                    'user'=>$user,
-                    'message'=>'success'
-                ],200);
+    //             return response()->json([
+    //                 'res'=>true,
+    //                 'token'=>$token,
+    //                 'user'=>$user,
+    //                 'message'=>'success'
+    //             ],200);
 
-            }else{
-                return response()->json([
-                    'res'=>false,
-                    'message'=>'Wrong email or password'
-                ],200); 
-            }
-        }else{
-            return response()->json([
-                'res'=>false,
-                'message'=>'Wrong data'
-            ],200); 
-        }
+    //         }else{
+    //             return response()->json([
+    //                 'res'=>false,
+    //                 'message'=>'Wrong email or password'
+    //             ],200); 
+    //         }
+    //     }else{
+    //         return response()->json([
+    //             'res'=>false,
+    //             'message'=>'Wrong data'
+    //         ],200); 
+    //     }
 
-    }
+    // }
 
 }
