@@ -1,6 +1,5 @@
 <?php
 
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +29,8 @@ Route::group(['middleware' => 'auth'], function () {
         'walls' => WallController::class,
         'hospital-rooms' => HospitalRoomController::class,
         'rules' => RuleController::class,
-        'simulations' => SimulationController::class
+        'simulations' => SimulationController::class,
+        'studyCards' => StudyCardController::class
     ]);
 
     Route::get('/rules/{hospital_room_id}/create', 'RuleController@create')->name('rules.create');
