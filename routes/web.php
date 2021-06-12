@@ -1,6 +1,5 @@
 <?php
 
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +28,9 @@ Route::group(['middleware' => 'auth'], function () {
         'floors' => FloorController::class,
         'walls' => WallController::class,
         'hospital-rooms' => HospitalRoomController::class,
-        'simulations' => SimulationController::class
+        'rules' => RuleController::class,
+        'simulations' => SimulationController::class,
+        'studyCards' => StudyCardController::class
     ]);
 
     Route::resource('rules', RuleController::class, ['except' => ['create', 'edit']]);

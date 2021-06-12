@@ -133,15 +133,15 @@
                         </div>
                     </a>
 
-                    <a class="list-group-item list-group-item-action"
-                        href="#">
+                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'studyCards.index' || Route::currentRouteName() == 'studyCards.create' || Route::currentRouteName() == 'studyCards.edit' || Route::currentRouteName() == 'studyCards.show' ? 'active' : '' }}"
+                        href="{{ route('studyCards.index') }}">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <i class="fas fa-book mr-2"></i>
                             <span class="menu-collapsed font-weight-bold">Tarjetas de estudio</span>
                         </div>
                     </a>
 
-                    <a class="list-group-item list-group-item-action"
+                    <a class="isDisabled list-group-item list-group-item-action"
                         href="#">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <i class="fas fa-dice mr-2"></i>
