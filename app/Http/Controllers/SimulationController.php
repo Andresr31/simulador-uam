@@ -17,7 +17,9 @@ class SimulationController extends Controller
     public function index()
     {
         $user = Auth::User();
-        $simulations = $user->simulations;
+        if ($user->hasRole('admin')) $simulations = Simulation::all();
+        else if ($user->hasRole('student')) $simulations = $user->simulations;
+
         foreach ($simulations as $simulation) {
             $dt = Carbon::parse($simulation->created_at);
             $simulation->created = $dt->toDateTimeString();
@@ -54,6 +56,9 @@ class SimulationController extends Controller
      */
     public function show(Simulation $simulation)
     {
+        $simulation->report->pre = json_decode($simulation->report->pre);
+        $simulation->report->simulation = json_decode($simulation->report->simulation);
+        
         return view('elements.simulations.show', compact('simulation'));
     }
 
