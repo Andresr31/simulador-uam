@@ -141,7 +141,7 @@
                         </div>
                     </a>
 
-                    <a class="isDisabled list-group-item list-group-item-action {{ Route::currentRouteName() == 'simulations.index' || Route::currentRouteName() == 'simulations.create' || Route::currentRouteName() == 'simulations.edit' || Route::currentRouteName() == 'simulations.show' ? 'active' : '' }}"
+                    <a class="isDisabled list-group-item list-group-item-action"
                         href="#">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <i class="fas fa-dice mr-2"></i>
