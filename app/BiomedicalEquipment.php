@@ -20,9 +20,9 @@ class BiomedicalEquipment extends Model
         return $this->belongsTo('App\BiomedicalEquipmentCategory');
     }
 
-    public function hospitalRooms()
+    public function equipmentRoom()
     {
-        return $this->hasMany('App\EquipmentRoomRequired');
+        return $this->hasOne('App\EquipmentRoomRequired');
     }
 
     public function risk_factor()
