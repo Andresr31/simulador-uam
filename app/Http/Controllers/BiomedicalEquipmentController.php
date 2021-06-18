@@ -20,6 +20,10 @@ class BiomedicalEquipmentController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))
+            return redirect()->route('home')
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         $biomedialEquipments = BiomedicalEquipment::all();
         foreach ($biomedialEquipments as $equipment) {
             $dt = Carbon::parse($equipment->created_at);
@@ -38,7 +42,7 @@ class BiomedicalEquipmentController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         $riskFactors = RiskFactor::all();
         $categories = BiomedicalEquipmentCategory::all();
@@ -56,7 +60,7 @@ class BiomedicalEquipmentController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         $input = $request->all();
         $equipment = new BiomedicalEquipment();
@@ -85,7 +89,7 @@ class BiomedicalEquipmentController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         return view("elements.biomedical-equipments.show", compact("biomedicalEquipment"));
     }
@@ -101,7 +105,7 @@ class BiomedicalEquipmentController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         $riskFactors = RiskFactor::all();
         $categories = BiomedicalEquipmentCategory::all();
@@ -120,7 +124,7 @@ class BiomedicalEquipmentController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         $biomedicalEquipment->fill($request->all());
         $biomedicalEquipment->maintenance_plan = $biomedicalEquipment->risk_factor_id ? true : false;
@@ -145,7 +149,7 @@ class BiomedicalEquipmentController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
                 
         $biomedicalEquipment->delete();
         return redirect()->route('biomedical-equipments.index')->with('successMessage', 'Equipo eliminado con éxito');

@@ -24,7 +24,7 @@ class HospitalRoomController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         $hospitalRooms = HospitalRoom::all();
         foreach ($hospitalRooms as $hr) {
             $dt = Carbon::parse($hr->created_at);
@@ -43,7 +43,7 @@ class HospitalRoomController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         $floors = Floor::all();
         $cellings = Celling::all();
         $walls = Wall::all();
@@ -61,7 +61,7 @@ class HospitalRoomController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         
         $input = $request->all();
         $hospitalRoom = new HospitalRoom();
@@ -75,7 +75,7 @@ class HospitalRoomController extends Controller
         $hospitalRoom->image = "/storage/" . $path;
         $hospitalRoom->save();
 
-        return redirect()->route('hospital-rooms.index')->with('successMessage', 'Ambiente creado con éxito');
+        return redirect()->route('hospital-rooms.index')->with('message', 'Ambiente creado con éxito');
     }
 
     /**
@@ -89,7 +89,7 @@ class HospitalRoomController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         return view("elements.hospital-rooms.show", compact("hospitalRoom"));
     }
@@ -105,7 +105,7 @@ class HospitalRoomController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         $floors = Floor::all();
         $cellings = Celling::all();
         $walls = Wall::all();
@@ -124,7 +124,7 @@ class HospitalRoomController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         $hospitalRoom->fill($request->all());
         $file = $request->image;
@@ -134,7 +134,7 @@ class HospitalRoomController extends Controller
             $hospitalRoom->image = "/storage/" . $path;
         }
         $hospitalRoom->save();
-        return redirect()->route('hospital-rooms.index')->with('successMessage', 'Equipo actualizado con éxito');
+        return redirect()->route('hospital-rooms.index')->with('message', 'Equipo actualizado con éxito');
     }
 
     /**
@@ -148,9 +148,9 @@ class HospitalRoomController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         
         $hospitalRoom->delete();
-        return redirect()->route('hospital-rooms.index')->with('successMessage', 'Ambiente hospitalario eliminado con éxito');
+        return redirect()->route('hospital-rooms.index')->with('message', 'Ambiente hospitalario eliminado con éxito');
     }
 }

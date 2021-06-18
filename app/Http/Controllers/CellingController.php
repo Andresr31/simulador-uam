@@ -23,7 +23,7 @@ class CellingController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         $cellings = Celling::paginate(10);
         return view('elements.celling.index')->with('cellings', $cellings);
     }
@@ -38,7 +38,7 @@ class CellingController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         return view('elements.celling.create');
     }
 
@@ -53,7 +53,7 @@ class CellingController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         $celling = new Celling();
         $celling->name  = $request->name;
         $celling->description= $request->description;
@@ -80,7 +80,7 @@ class CellingController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         $celling = Celling::find($celling_id);
         if($celling){
             return view('elements.celling.show')->with('celling',$celling);
@@ -101,7 +101,7 @@ class CellingController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         $celling = Celling::find($celling_id);
         if($celling){
             return view('elements.celling.edit')->with('celling',$celling);
@@ -122,7 +122,7 @@ class CellingController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         
         $celling = Celling::find($celling_id);
         $celling->name  = $request->name;
@@ -149,7 +149,7 @@ class CellingController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
                 
         $celling = Celling::find($celling_id);
         if($celling->delete()) {

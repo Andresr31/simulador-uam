@@ -22,7 +22,7 @@ class RuleController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         $hospitalRooms = HospitalRoom::all();
         foreach ($hospitalRooms as $hr) {
             $dt = Carbon::parse($hr->created_at);
@@ -42,7 +42,7 @@ class RuleController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         $biomedicalEquipments = BiomedicalEquipment::all();
         return view('elements.rules.create')->with('biomedicalEquipments',$biomedicalEquipments)->with('hospital_room_id',$hospital_room_id);
@@ -59,7 +59,7 @@ class RuleController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         $rule = EquipmentRoomRequired::where('biomedical_equipment_id',$request->biomedical_equipment_id)->where('hospital_room_id',$request->hospital_room_id)->first();
         if ($rule)
@@ -107,7 +107,7 @@ class RuleController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         $rule = EquipmentRoomRequired::find($rule_id);
         if (!$rule) {
@@ -129,7 +129,7 @@ class RuleController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         $rule = EquipmentRoomRequired::find($rule_id);
         if (!$rule)
@@ -156,7 +156,7 @@ class RuleController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
                 
         $rule = EquipmentRoomRequired::find($rule_id);
         if($rule->delete()) {
