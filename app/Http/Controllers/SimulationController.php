@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BiomedicalEquipment;
 use App\Simulation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -17,7 +18,9 @@ class SimulationController extends Controller
     public function index()
     {
         $user = Auth::User();
-        $simulations = $user->simulations;
+        if ($user->hasRole('admin')) $simulations = Simulation::all();
+        else if ($user->hasRole('student')) $simulations = $user->simulations;
+
         foreach ($simulations as $simulation) {
             $dt = Carbon::parse($simulation->created_at);
             $simulation->created = $dt->toDateTimeString();
@@ -54,6 +57,25 @@ class SimulationController extends Controller
      */
     public function show(Simulation $simulation)
     {
+        $simulation->report->pre = json_decode($simulation->report->pre);
+        $simulation->report->simulation = json_decode($simulation->report->simulation);
+        
+        $missingItems = []; //elemento que faltaron
+        $leftoverItems = []; //elementos que sobrarion
+        $failedItems = []; //elementos que fallaron
+        foreach($simulation->report->simulation as $resp){
+            $equipment = BiomedicalEquipment::find($resp->biomedical_equipment_id);
+            if($equipment->equipmentRoom->required == "TRUE" && $resp->required == "false"){
+                $missingItems[] = $equipment;
+            }
+            if($equipment->equipmentRoom->required == "FALSE" && $resp->required == "true"){
+                $leftoverItems[] = $equipment;
+            }
+            // $failedItems[] = $equipment; // aquí hacer la validaciónde si se respondio conrrecto
+        }
+        $simulation->missingItems = $missingItems;
+        $simulation->leftoverItems = $leftoverItems;
+        $simulation->failedItems = $failedItems;
         return view('elements.simulations.show', compact('simulation'));
     }
 
