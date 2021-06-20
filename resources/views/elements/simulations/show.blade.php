@@ -94,7 +94,26 @@
                                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                                             data-parent="#accordionSimulation">
                                             <div class="card-body">
-
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                          <th scope="col">Equipo biomedico</th>
+                                                          <th scope="col">Factor de riesgo</th>
+                                                          <th scope="col">Respuesta</th>
+                                                          <th scope="col">Retroalimentación</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($simulation->failedItems as $failedItem)
+                                                            <tr>
+                                                                <td>{{$failedItem->name}}</td>
+                                                                <td>{{$failedItem->myRisk->name}}</td>
+                                                                <td>{{$failedItem->responseMessage}}</td>
+                                                                <td>{{!$failedItem->response ? $failedItem->equipmentRoom->feedback : ""}}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>

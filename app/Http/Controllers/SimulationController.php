@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\BiomedicalEquipment;
+use App\RiskFactor;
 use App\Simulation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -71,7 +72,17 @@ class SimulationController extends Controller
             if($equipment->equipmentRoom->required == "FALSE" && $resp->required == "true"){
                 $leftoverItems[] = $equipment;
             }
-            // $failedItems[] = $equipment; // aquí hacer la validaciónde si se respondio conrrecto
+            $equipment->myRisk = RiskFactor::find($resp->risk);
+
+            if($equipment->myRisk->id == $equipment->risk_factor_id){
+                $equipment->response = true;
+                $equipment->responseMessage = "Respuesta correcta";
+            }else{
+                $equipment->response = false;
+                $equipment->responseMessage = "Respuesta incorrecta";
+            }
+
+            $failedItems[] = $equipment;
         }
         $simulation->missingItems = $missingItems;
         $simulation->leftoverItems = $leftoverItems;
