@@ -22,7 +22,7 @@ class UsersController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         $users = User::role(['teacher', 'student'])->get();
         foreach ($users as $user) {
             $dt = Carbon::parse($user->created_at);
@@ -41,7 +41,7 @@ class UsersController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         $roles = Role::all()->reject(function ($value, $key) {
             if ($value->id == 1) return true;
             return false;
@@ -61,7 +61,7 @@ class UsersController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         $input = $request->all();
         $user = new User();
@@ -69,7 +69,7 @@ class UsersController extends Controller
         $user->save();
         $user->assignRole(Role::find($request->role)->name);
 
-        return redirect()->route('users.index')->with('successMessage', 'Usuario creado con éxito');
+        return redirect()->route('users.index')->with('message', 'Usuario creado con éxito');
     }
 
     /**
@@ -83,7 +83,7 @@ class UsersController extends Controller
         $userCurrent = Auth::user();
         if (!$userCurrent->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         return view("elements.users.show", compact("user"));
     }
@@ -99,7 +99,7 @@ class UsersController extends Controller
         $userCurrent = Auth::user();
         if (!$userCurrent->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         $roles = Role::all()->reject(function ($value, $key) {
             if ($value->id == 1) return true;
             return false;
@@ -120,7 +120,7 @@ class UsersController extends Controller
         $userCurrent = Auth::user();
         if (!$userCurrent->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         $input = $request->all();
         $user->fill($input);
@@ -128,7 +128,7 @@ class UsersController extends Controller
         $user->removeRole($user->roles[0]->name);
         $user->assignRole(Role::find($request->role)->name);
 
-        return redirect()->route('users.index')->with('successMessage', 'Usuario creado con éxito');
+        return redirect()->route('users.index')->with('message', 'Usuario creado con éxito');
     }
 
     /**
@@ -142,9 +142,9 @@ class UsersController extends Controller
         $userCurrent = Auth::user();
         if (!$userCurrent->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         
         $user->delete();
-        return redirect()->route('users.index')->with('successMessage', 'Usuario eliminado con éxito');
+        return redirect()->route('users.index')->with('message', 'Usuario eliminado con éxito');
     }
 }

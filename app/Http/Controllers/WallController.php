@@ -21,7 +21,7 @@ class WallController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         $walls = Wall::all();
         foreach ($walls as $wall) {
             $dt = Carbon::parse($wall->created_at);
@@ -40,7 +40,7 @@ class WallController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         return view('elements.walls.create');
     }
 
@@ -55,7 +55,7 @@ class WallController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         $input = $request->all();
         $wall = new Wall();
@@ -70,7 +70,7 @@ class WallController extends Controller
         $wall->save();
 
 
-        return redirect()->route('walls.index')->with('successMessage', 'Pared creada con éxito');
+        return redirect()->route('walls.index')->with('message', 'Pared creada con éxito');
     }
 
     /**
@@ -84,7 +84,7 @@ class WallController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         return view("elements.walls.show", compact("wall"));
     }
@@ -100,7 +100,7 @@ class WallController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         return view('elements.walls.edit', compact("wall"));
     }
 
@@ -116,7 +116,7 @@ class WallController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         $input = $request->all();
         $wall->fill($input);
@@ -128,7 +128,7 @@ class WallController extends Controller
         }
         $wall->save();
 
-        return redirect()->route('walls.index')->with('successMessage', 'Pared actualizada con éxito');
+        return redirect()->route('walls.index')->with('message', 'Pared actualizada con éxito');
     }
 
     /**
@@ -142,9 +142,9 @@ class WallController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         
         $wall->delete();
-        return redirect()->route('walls.index')->with('successMessage', 'Pared eliminada con éxito');
+        return redirect()->route('walls.index')->with('message', 'Pared eliminada con éxito');
     }
 }

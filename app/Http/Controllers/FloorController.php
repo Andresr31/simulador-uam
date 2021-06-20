@@ -25,7 +25,7 @@ class FloorController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         $floors = Floor::paginate(10);
         return view('elements.floor.index')->with('floors', $floors);
@@ -41,7 +41,7 @@ class FloorController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         return view('elements.floor.create');
     }
@@ -57,7 +57,7 @@ class FloorController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         $floor = new Floor();
         $floor->name  = $request->name;
@@ -84,7 +84,7 @@ class FloorController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         $floor = Floor::find($floor_id);
         if($floor){
@@ -106,7 +106,7 @@ class FloorController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         $floor = Floor::find($floor_id);
         if($floor){
@@ -129,7 +129,7 @@ class FloorController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
                 
         $floor = Floor::find($floor_id);
         $floor->name  = $request->name;
@@ -157,7 +157,7 @@ class FloorController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
                 
         $floor = Floor::find($floor_id);
         if($floor->delete()) {

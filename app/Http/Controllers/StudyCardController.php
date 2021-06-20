@@ -36,7 +36,7 @@ class StudyCardController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin') && !$user->hasRole('teacher'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         return view('elements.study-card.create');
     }
 
@@ -51,7 +51,7 @@ class StudyCardController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin') && !$user->hasRole('teacher'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         $input = $request->all();
         $studyCard = new StudyCard();
@@ -65,7 +65,7 @@ class StudyCardController extends Controller
         $studyCard->save();
 
 
-        return redirect()->route('studyCards.index')->with('successMessage', 'Tarjeta de estudio creada con éxito');
+        return redirect()->route('studyCards.index')->with('message', 'Tarjeta de estudio creada con éxito');
     }
 
     /**
@@ -90,7 +90,7 @@ class StudyCardController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin') && !$user->hasRole('teacher'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         return view('elements.study-card.edit', compact("studyCard"));
     }
 
@@ -106,7 +106,7 @@ class StudyCardController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin') && !$user->hasRole('teacher'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
 
         $input = $request->all();
         $studyCard->fill($input);
@@ -118,7 +118,7 @@ class StudyCardController extends Controller
         }
         $studyCard->save();
 
-        return redirect()->route('studyCards.index')->with('successMessage', 'Tarjeta de estudio actualizada con éxito');
+        return redirect()->route('studyCards.index')->with('message', 'Tarjeta de estudio actualizada con éxito');
     }
 
     /**
@@ -132,9 +132,9 @@ class StudyCardController extends Controller
         $user = Auth::user();
         if (!$user->hasRole('admin') && !$user->hasRole('teacher'))
             return redirect()->route('home')
-                ->with('errorMessage', '¡No tienes permiso para acceder a este recurso!');
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
         
         $studyCard->delete();
-        return redirect()->route('studyCards.index')->with('successMessage', 'Tarjeta de estudio eliminada con éxito');
+        return redirect()->route('studyCards.index')->with('message', 'Tarjeta de estudio eliminada con éxito');
     }
 }
