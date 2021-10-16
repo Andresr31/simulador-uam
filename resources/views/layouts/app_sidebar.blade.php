@@ -114,13 +114,13 @@
                     @endif
 
                     @if (Auth::user()->hasRole('teacher'))
-                        <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'rules.index' || Route::currentRouteName() == 'rules.create' || Route::currentRouteName() == 'rules.edit' || Route::currentRouteName() == 'rules.show' ? 'active' : '' }}"
+                        {{-- <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'rules.index' || Route::currentRouteName() == 'rules.create' || Route::currentRouteName() == 'rules.edit' || Route::currentRouteName() == 'rules.show' ? 'active' : '' }}"
                             href="{{ route('users.index') }}">
                             <div class="d-flex w-100 justify-content-start align-items-center">
                                 <i class="fas fa-users mr-2"></i>
                                 <span class="menu-collapsed font-weight-bold">Estudiantes</span>
                             </div>
-                        </a>
+                        </a> --}}
 
                         <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'rules.index' || Route::currentRouteName() == 'rules.create' || Route::currentRouteName() == 'rules.edit' || Route::currentRouteName() == 'rules.show' ? 'active' : '' }}"
                             href="{{ route('rules.index') }}">
@@ -149,13 +149,16 @@
                         </a>
                     @endif
                     
-                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'simulations.index' || Route::currentRouteName() == 'simulations.create' || Route::currentRouteName() == 'simulations.edit' || Route::currentRouteName() == 'simulations.show' ? 'active' : '' }}"
-                        href="{{ route('simulations.index') }}">
-                        <div class="d-flex w-100 justify-content-start align-items-center">
-                            <i class="fas fa-hospital-user mr-2"></i>
-                            <span class="menu-collapsed font-weight-bold">Simulaciones</span>
-                        </div>
-                    </a>
+                    @if (!Auth::user()->hasRole('teacher'))
+                        <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'simulations.index' || Route::currentRouteName() == 'simulations.create' || Route::currentRouteName() == 'simulations.edit' || Route::currentRouteName() == 'simulations.show' ? 'active' : '' }}"
+                            href="{{ route('simulations.index') }}">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <i class="fas fa-hospital-user mr-2"></i>
+                                <span class="menu-collapsed font-weight-bold">Simulaciones</span>
+                            </div>
+                        </a>
+                    @endif
+                    
 
                     {{-- <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'studyCards.index' || Route::currentRouteName() == 'studyCards.create' || Route::currentRouteName() == 'studyCards.edit' || Route::currentRouteName() == 'studyCards.show' ? 'active' : '' }}"
                         href="{{ route('studyCards.index') }}">

@@ -22,7 +22,9 @@
                                         <th>Regla</th>
                                         <th>Retroalimentación</th>
                                         <th>Creado en</th>
-                                        <th class="text-muted">Acciones</th>
+                                        @if (Auth::user()->hasRole('admin'))
+                                            <th class="text-muted">Acciones</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -32,33 +34,36 @@
                                             <td>@if ($rule->required == "TRUE") REQUERIDO  @else @if ($rule->required == "OPTIONAL") OPCIONAL @else NO REQUERIDO @endif @endif</td>
                                             <td>{{ $rule->feedback }}</td>
                                             <td>{{ $rule->created }}</td>
-                                            <td>
-                                                <a class="btn btn-link d-inline p-0 mr-2 text-decoration-none"
-                                                    data-toggle="tooltip" data-placement="top" title="Editar"
-                                                    href="{{ route('rules.edit',[$hospitalRoom->id, $rule->id]) }}">
-                                                    <span>
-                                                        <i class="fas fa-pen" aria-hidden="true"></i>
-                                                    </span>
-                                                </a>
-                                                {{-- <a class="btn btn-link d-inline p-0 mr-2 text-decoration-none"
-                                                    data-toggle="tooltip" data-placement="top" title="ver"
-                                                    href="{{ route('rules.show', $rule->id) }}">
-                                                    <span>
-                                                        <i class="fas fa-eye" aria-hidden="true"></i>
-                                                    </span>
-                                                </a> --}}
-                                                <form action="{{route('rules.destroy',$rule->id)}}" method="POST" class="d-inline">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="button" class="btn btn-link d-inline p-0 mr-2 text-decoration-none btn-delete"
-                                                        data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                            @if (Auth::user()->hasRole('admin'))
+                                                <td>
+                                                    <a class="btn btn-link d-inline p-0 mr-2 text-decoration-none"
+                                                        data-toggle="tooltip" data-placement="top" title="Editar"
+                                                        href="{{ route('rules.edit',[$hospitalRoom->id, $rule->id]) }}">
                                                         <span>
-                                                            <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                                                            <i class="fas fa-pen" aria-hidden="true"></i>
                                                         </span>
-                                                    </button>
-                                                </form>
-                                                
-                                            </td>
+                                                    </a>
+                                                    {{-- <a class="btn btn-link d-inline p-0 mr-2 text-decoration-none"
+                                                        data-toggle="tooltip" data-placement="top" title="ver"
+                                                        href="{{ route('rules.show', $rule->id) }}">
+                                                        <span>
+                                                            <i class="fas fa-eye" aria-hidden="true"></i>
+                                                        </span>
+                                                    </a> --}}
+                                                    <form action="{{route('rules.destroy',$rule->id)}}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="button" class="btn btn-link d-inline p-0 mr-2 text-decoration-none btn-delete"
+                                                            data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <span>
+                                                                <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                                                            </span>
+                                                        </button>
+                                                    </form>
+                                                    
+                                                </td>
+                                            @endif
+                                            
                                         </tr>
                                     @endforeach
                                 </tbody>

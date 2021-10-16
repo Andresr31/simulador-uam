@@ -75,9 +75,8 @@
                                         <th>Correo</th>
                                         <th>Carrera</th>
                                         <th>Semestre</th>
-                                        @if (Auth::user()->hasRole('admin'))
-                                            <th>Acciones</th>
-                                        @endif
+                                        <th>Acciones</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -87,25 +86,27 @@
                                             <td>{{ $enrollment->student->email }}</td>
                                             <td>{{ $enrollment->student->career->name }}</td>
                                             <td>{{ $enrollment->student->semester }}</td>
-                                            @if (Auth::user()->hasRole('admin'))
+                                            @if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('teacher'))
                                                 <td>
-                                                    {{-- <a class="btn btn-link d-inline p-0 mr-2 text-decoration-none"
-                                                        data-toggle="tooltip" data-placement="top" title="ver"
-                                                        href="{{ route('enrollments.show', $enrollment) }}">
+                                                    <a class="btn btn-link d-inline p-0 mr-2 text-decoration-none"
+                                                        data-toggle="tooltip" data-placement="top" title="Ver simulaciones"
+                                                        href="{{ route('simulations.showSimulation', $enrollment->student) }}">
                                                         <span>
-                                                            <i class="fas fa-eye" aria-hidden="true"></i>
+                                                            <i class="fas fa-desktop" aria-hidden="true"></i>
                                                         </span>
-                                                    </a> --}}
-                                                    <form action="{{route('enrollments.destroy',$enrollment)}}" method="POST" class="d-inline">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="button" class="btn btn-link d-inline p-0 mr-2 text-decoration-none btn-delete"
-                                                            data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                                            <span>
-                                                                <i class="fas fa-trash-alt" aria-hidden="true"></i>
-                                                            </span>
-                                                        </button>
-                                                    </form>
+                                                    </a>
+                                                    @if (Auth::user()->hasRole('admin'))
+                                                        <form action="{{route('enrollments.destroy',$enrollment)}}" method="POST" class="d-inline">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="button" class="btn btn-link d-inline p-0 mr-2 text-decoration-none btn-delete"
+                                                                data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                                <span>
+                                                                    <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                                                                </span>
+                                                            </button>
+                                                        </form>
+                                                    @endif
                                                 </td>
                                             @endif
                                         </tr>

@@ -20,7 +20,7 @@ class RuleController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if (!$user->hasRole('admin'))
+        if (!$user->hasRole('admin') && !$user->hasRole('teacher'))
             return redirect()->route('home')
                 ->with('error', '¡No tienes permiso para acceder a este recurso!');
         $hospitalRooms = HospitalRoom::all();
