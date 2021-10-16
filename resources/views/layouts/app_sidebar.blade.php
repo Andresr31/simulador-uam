@@ -56,8 +56,16 @@
                          
                         <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'users.index' || Route::currentRouteName() == 'users.create' || Route::currentRouteName() == 'users.edit' || Route::currentRouteName() == 'users.show' ? 'active' : '' }}" href="{{ route('users.index') }}">
                             <div class="d-flex w-100 justify-content-start align-items-center">
-                                <i class="fas fa-users mr-2"></i>
+                                <i class="fas fa-user mr-2"></i>
                                 <span class="menu-collapsed font-weight-bold">Usuarios</span>
+                            </div>
+                        </a>
+
+                        <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'groups.index' || Route::currentRouteName() == 'groups.create' || Route::currentRouteName() == 'groups.edit' || Route::currentRouteName() == 'groups.show' ? 'active' : '' }}"
+                            href="{{ route('groups.index') }}">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <i class="fas fa-users mr-2"></i>
+                                <span class="menu-collapsed font-weight-bold">Grupos</span>
                             </div>
                         </a>
 
@@ -121,9 +129,25 @@
                                 <span class="menu-collapsed font-weight-bold">Reglas</span>
                             </div>
                         </a>
+                        <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'groups.index' || Route::currentRouteName() == 'groups.create' || Route::currentRouteName() == 'groups.edit' || Route::currentRouteName() == 'groups.show' ? 'active' : '' }}"
+                            href="{{ route('groups.index') }}">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <i class="fas fa-users mr-2"></i>
+                                <span class="menu-collapsed font-weight-bold">Grupos</span>
+                            </div>
+                        </a>
                         
                     @endif
                     
+                    @if (Auth::user()->isAssistantTeacher())
+                        <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'groups.index' || Route::currentRouteName() == 'groups.create' || Route::currentRouteName() == 'groups.edit' || Route::currentRouteName() == 'groups.show' ? 'active' : '' }}"
+                            href="{{ route('groups.index') }}">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <i class="fas fa-users mr-2"></i>
+                                <span class="menu-collapsed font-weight-bold">Grupos</span>
+                            </div>
+                        </a>
+                    @endif
                     
                     <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'simulations.index' || Route::currentRouteName() == 'simulations.create' || Route::currentRouteName() == 'simulations.edit' || Route::currentRouteName() == 'simulations.show' ? 'active' : '' }}"
                         href="{{ route('simulations.index') }}">
@@ -133,7 +157,7 @@
                         </div>
                     </a>
 
-                    <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'studyCards.index' || Route::currentRouteName() == 'studyCards.create' || Route::currentRouteName() == 'studyCards.edit' || Route::currentRouteName() == 'studyCards.show' ? 'active' : '' }}"
+                    {{-- <a class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'studyCards.index' || Route::currentRouteName() == 'studyCards.create' || Route::currentRouteName() == 'studyCards.edit' || Route::currentRouteName() == 'studyCards.show' ? 'active' : '' }}"
                         href="{{ route('studyCards.index') }}">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <i class="fas fa-book mr-2"></i>
@@ -147,7 +171,7 @@
                             <i class="fas fa-dice mr-2"></i>
                             <span class="menu-collapsed font-weight-bold">Trivias</span>
                         </div>
-                    </a>
+                    </a> --}}
 
                     <div class="accordion" id="sidebarAcordion">
 
@@ -230,6 +254,9 @@
         $(document).ready(function() {
 
             $('#biomedicalEquipment').select2();
+            $('#main_teacher').select2();
+            $('#assistant_teacher').select2();
+            $('#student_id').select2();
 
             $('.owl-carousel').owlCarousel({
                 loop: true,

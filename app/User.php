@@ -69,4 +69,19 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    /**
+     * Return true or false, if a user is an assistant teacher.
+     *
+     * @return array
+     */
+    public function isAssistantTeacher()
+    {
+        if (count(Group::where('assistant_teacher',$this->id)->get())>0) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }

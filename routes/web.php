@@ -29,6 +29,8 @@ Route::group(['middleware' => 'auth'], function () {
         'walls' => WallController::class,
         'hospital-rooms' => HospitalRoomController::class,
         'simulations' => SimulationController::class,
+        'groups' => GroupController::class,
+        'enrollments' => EnrollmentController::class,
         'studyCards' => StudyCardController::class
     ]);
 

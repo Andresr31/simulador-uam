@@ -27,6 +27,10 @@
                         @endif
                     </div>
                 </div> --}}
+                @php
+                    use App\Career;
+                    $careers = Career::all();
+                @endphp
             
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -47,12 +51,20 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="career" class="col-md-4 col-form-label text-md-right">{{ __('Carrera') }}</label>
+                            <label for="career_id" class="col-md-4 col-form-label text-md-right">{{ __('Carrera') }}</label>
 
                             <div class="col-md-6">
-                                <input id="career" type="text" class="form-control @error('career') is-invalid @enderror" name="career" value="{{ old('name') }}" required autofocus>
+                                {{-- <input id="career_id" type="text" class="form-control @error('career_id') is-invalid @enderror" name="career_id" value="{{ old('name') }}" required autofocus> --}}
 
-                                @error('career')
+                                <select id="career_id" class="form-control @error('career_id') is-invalid @enderror"
+                                    name="career_id" required>
+                                    @foreach ($careers as $career)
+                                        <option value="{{ $career->id }}">
+                                            {{ $career->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('career_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

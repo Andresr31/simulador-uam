@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+
 class RegisterController extends Controller
 {
     /*
@@ -66,7 +67,7 @@ class RegisterController extends Controller
     {
         $user = User::create([
             'fullname' => $data['fullname'],
-            'career' => $data['career'],
+            'career_id' => $data['career_id'],
             'semester' => $data['semester'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
