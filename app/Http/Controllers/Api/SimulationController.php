@@ -74,4 +74,46 @@ class SimulationController extends Controller
             'message' => 'success'
         ], 200);
     }
+
+    public function test(Request $request)
+    {
+        return $request;
+        // // get user that uses service
+        // $user = auth('api')->user();
+        // // get form data
+        // $data = json_decode($request->data);
+        // // save report
+        // $report = Report::create([
+        //     'pre' => json_encode($data->pre),
+        //     'simulation' => json_encode($data->simulation),
+        //     'score_pre' => $data->scorePre,
+        //     'score_simulation' => $data->scoreSimulation,
+        //     'score_pos' => $data->scorePos,
+        //     'score_total' => $data->scoreTotal
+        // ]);
+        // // save simulation
+        // $simulation = Simulation::create([
+        //     'time' => $data->time,
+        //     'numberAttempts' => $data->numberAttempts,
+        //     'hopital_room_id' => $data->room_id,
+        //     'user_id' => $user->id,
+        //     'report_id' => $report->id,
+        // ]);
+        // // if send image file, save and update image field in simulation
+        // $file = $request->image;
+        // if ($file) {
+        //     $route = "images/simulation/$simulation->id";
+        //     $path = Storage::disk('public')->putFileAs($route, $file, $file->getClientOriginalName());
+        //     $simulation->image = "/storage/" . $path;
+        //     $simulation->save();
+        // }
+        // return response()->json([
+        //     'data' => [
+        //         "simulation" => $simulation,
+        //         "report" => $report
+        //     ],
+        //     'res' => true,
+        //     'message' => 'La simulación fue registrada exitosamente'
+        // ], 200);
+    }
 }

@@ -21,4 +21,5 @@ Route::group([
     Route::get('getPre', 'Api\SimulationController@getPre');
     Route::get('rules/{room_id}', 'Api\RulesController@getRules');
     Route::post('simulation', 'Api\SimulationController@registerScore');
+    Route::post('test', 'Api\SimulationController@test');
 });
