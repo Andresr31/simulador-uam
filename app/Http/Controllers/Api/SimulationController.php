@@ -77,7 +77,7 @@ class SimulationController extends Controller
 
     public function test(Request $request)
     {
-        return $request;
+        return $request->data;
         // // get user that uses service
         // $user = auth('api')->user();
         // // get form data
