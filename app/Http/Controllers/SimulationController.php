@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\BiomedicalEquipment;
+use App\HospitalRoom;
 use App\RiskFactor;
 use App\Simulation;
 use App\User;
@@ -84,6 +85,7 @@ class SimulationController extends Controller
         $leftoverItems = []; //elementos que sobrarion
         $failedItems = []; //elementos que fallaron
         foreach($simulation->report->simulation as $resp){
+            // dd($simulation->report->simulation);
             $equipment = BiomedicalEquipment::find($resp->biomedical_equipment_id);
             if($equipment->equipmentRoom->required == "TRUE" && $resp->required == "false"){
                 $missingItems[] = $equipment;
@@ -106,6 +108,13 @@ class SimulationController extends Controller
         $simulation->missingItems = $missingItems;
         $simulation->leftoverItems = $leftoverItems;
         $simulation->failedItems = $failedItems;
+        $simulation->user = User::find($simulation->user_id);
+        $simulation->hospital_room = HospitalRoom::find($simulation->hopital_room_id);
+        $simulation->score_pre = $simulation->report->score_pre;
+        $simulation->score_simulation = $simulation->report->score_simulation;
+        $simulation->score_pos = $simulation->report->score_pos;
+        $simulation->score = $simulation->report->score_total;
+        // dd($simulation);
         return view('elements.simulations.show', compact('simulation'));
     }
 

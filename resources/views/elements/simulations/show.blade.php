@@ -24,6 +24,31 @@
                                         <div class="card-header bg-secondary" id="headingOne">
                                             <h2 class="mb-0">
                                                 <button class="btn btn-link btn-block text-left text-white" type="button"
+                                                    data-toggle="collapse" data-target="#collapseZero" aria-expanded="false"
+                                                    aria-controls="collapseZero">
+                                                    Resumen
+                                                </button>
+                                            </h2>
+                                        </div>
+
+                                        <div id="collapseZero" class="collapse" aria-labelledby="headingOne"
+                                            data-parent="#accordionSimulation">
+                                            <div class="card-body">
+                                                <h6><strong>Tiempo:             </strong> {{$simulation->time}} min</h6>
+                                                <h6><strong>Estudiante:         </strong> {{$simulation->user->fullname}}</h6>
+                                                <h6><strong>Número de intentos: </strong> {{$simulation->numberAttempts}}</h6>
+                                                <h6><strong>Habitación:         </strong> {{$simulation->hospital_room->name}}</h6>
+                                                <h6><strong>Calificación PRE:   </strong> {{$simulation->score_pre}}</h6>
+                                                <h6><strong>Calificación SIMULACIÓN: </strong> {{$simulation->score_simulation}}</h6>
+                                                <h6><strong>Calificación POST:   </strong> {{$simulation->score_pos}}</h6>
+                                                <h6><strong>Calificación TOTAL:   </strong> {{$simulation->score}}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header bg-secondary" id="headingOne">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link btn-block text-left text-white" type="button"
                                                     data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
                                                     aria-controls="collapseOne">
                                                     Elementos que faltaron
@@ -114,6 +139,29 @@
                                                         @endforeach
                                                     </tbody>
                                                 </table>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header bg-secondary" id="headingFour">
+                                                <h2 class="mb-0">
+                                                    <button class="btn btn-link btn-block text-left text-white" type="button"
+                                                        data-toggle="collapse" data-target="#collapseFour" aria-expanded="false"
+                                                        aria-controls="collapseFour">
+                                                        Imagen de Evidencia
+                                                    </button>
+                                                </h2>
+                                            </div>
+    
+                                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                                data-parent="#accordionSimulation">
+                                                <div class="card-body">
+                                                    <div class="col-12">
+                                                        <div class="mt-3 img-preview justify-content-center">
+                                                            <img src="{{ $simulation->image }}" id="preview"
+                                                                class="img-thumbnail">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
