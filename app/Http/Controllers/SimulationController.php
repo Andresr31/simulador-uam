@@ -147,8 +147,15 @@ class SimulationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Simulation $simulation)
     {
-        //
+        $user = Auth::user();
+        if (!$user->hasRole('admin') && !$user->hasRole('teacher'))
+            return redirect()->route('home')
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
+        $report = $simulation->report;
+        $simulation->delete();
+        $report->delete();
+        return redirect()->route('simulations.index')->with('message', 'Simulación eliminada con éxito');
     }
 }

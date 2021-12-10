@@ -40,6 +40,19 @@
                                                         <i class="fas fa-eye" aria-hidden="true"></i>
                                                     </span>
                                                 </a>
+                                                @if (Auth::user()->hasRole('teacher') || Auth::user()->hasRole('admin'))
+                                                    <form action="{{route('simulations.destroy',$simulation)}}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="button" class="btn btn-link d-inline p-0 mr-2 text-decoration-none btn-delete"
+                                                            data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <span>
+                                                                <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                                                            </span>
+                                                        </button>
+                                                    </form>
+                                                @endif
+                                                
                                             </td>
                                         </tr>
                                     @endforeach
