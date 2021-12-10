@@ -157,8 +157,7 @@
                                                 <div class="card-body">
                                                     <div class="col-12">
                                                         <div class="mt-3 img-preview justify-content-center">
-                                                            <img src="{{ $simulation->image }}" id="preview"
-                                                                class="img-thumbnail">
+                                                        <img class="img-thumbnail" id='preview' src='data:image/jpeg;base64,{{ $simulation->image }}' />
                                                         </div>
                                                     </div>
                                                 </div>

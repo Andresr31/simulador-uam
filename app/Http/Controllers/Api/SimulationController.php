@@ -20,6 +20,8 @@ class SimulationController extends Controller
 
     public function registerScore(Request $request)
     {
+        
+
         // get user that uses service
         $user = auth('api')->user();
         // get form data
@@ -44,17 +46,14 @@ class SimulationController extends Controller
         // if send image file, save and update image field in simulation
         $file = $request->image;
         if ($file) {
-            $route = "images/simulation/$simulation->id";
-            $path = Storage::disk('public')->putFileAs($route, $file, $file->getClientOriginalName());
-            $simulation->image = "/storage/" . $path;
+            $image = base64_encode(file_get_contents($request->file('image')));
+            // $route = "images/simulation/$simulation->id";
+            // $path = Storage::disk('public')->putFileAs($route, $file, $file->getClientOriginalName());
+            $simulation->image = $image;
             $simulation->save();
         }
 
         return response()->json([
-            'data' => [
-                "simulation" => $simulation,
-                "report" => $report
-            ],
             'res' => true,
             'message' => 'La simulación fue registrada exitosamente'
         ], 200);
