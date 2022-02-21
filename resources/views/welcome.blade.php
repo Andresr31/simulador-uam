@@ -374,7 +374,7 @@
 
                             <div class="col-md-6" data-aos="zoom-out" data-aos-delay="200">
                                 <div class="feature-box d-flex align-items-center">
-                                    <i class="bi bi-arrow-right"></i>
+                                    <a href="https://drive.google.com/drive/folders/1kjDZ_LZD6EoAvoxUrJu4U3RTznIhJYiC?usp=sharing" target="_blank" rel="noopener noreferrer"><i class="bi bi-arrow-right"></i></a>
                                     <h3 href="#"
                                         class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
                                         <span>Aplicación de escritorio windows</span>
@@ -384,7 +384,7 @@
 
                             <div class="col-md-6" data-aos="zoom-out" data-aos-delay="300">
                                 <div class="feature-box d-flex align-items-center">
-                                    <i class="bi bi-arrow-right"></i>
+                                    <a href="https://drive.google.com/drive/folders/1k54FojXEFvAWFdOUVWCez7OqnjYn7Ird?usp=sharing" target="_blank" rel="noopener noreferrer"><i class="bi bi-arrow-right"></i></a>
                                     <h3 href="#"
                                         class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
                                         <span>Guia de usuario sobre los ambientes</span>

@@ -112,7 +112,7 @@
                                                 <button class="btn btn-link btn-block text-left text-white collapsed"
                                                     type="button" data-toggle="collapse" data-target="#collapseThree"
                                                     aria-expanded="false" aria-controls="collapseThree">
-                                                    Elementos que fallaron la validación
+                                                    Resultados evaluación de riesgos
                                                 </button>
                                             </h2>
                                         </div>

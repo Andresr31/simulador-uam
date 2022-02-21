@@ -90,7 +90,7 @@
                                                 <td>
                                                     <a class="btn btn-link d-inline p-0 mr-2 text-decoration-none"
                                                         data-toggle="tooltip" data-placement="top" title="Ver simulaciones"
-                                                        href="{{ route('simulations.showSimulation', $enrollment->student) }}">
+                                                        href="{{ route('simulations.showSimulation', $enrollment->student->id)}}">
                                                         <span>
                                                             <i class="fas fa-desktop" aria-hidden="true"></i>
                                                         </span>

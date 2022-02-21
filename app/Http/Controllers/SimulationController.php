@@ -37,10 +37,15 @@ class SimulationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showSimulations(User $user)
+    public function showSimulations($user)
     {
+        $auth = Auth::user();
+        if (!$auth->hasRole('admin') && !$auth->hasRole('teacher'))
+            return redirect()->route('home')
+                ->with('error', '¡No tienes permiso para acceder a este recurso!');
+        $user = User::find($user);
         $simulations = $user->simulations;
-
+        // dd($simulations);
         foreach ($simulations as $simulation) {
             $dt = Carbon::parse($simulation->created_at);
             $simulation->created = $dt->toDateTimeString();
