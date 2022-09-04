@@ -37,10 +37,10 @@
         <div class="d-flex" id="wrapper">
             <div class="border-right bg-white shadow-sm " id="sidebar-wrapper">
                 <div class="sidebar-heading align-content-center text-center">
-                    <h6><strong>{{ Auth::user()->fullname }}</strong></h6>
-                    <a class="nav-link p-0 active exact-active" href="#">
+                    <h5><strong>{{ Auth::user()->fullname }}</strong></h5>
+                    {{-- <a class="nav-link p-0 active exact-active" href="#">
                         Perfil
-                    </a>
+                    </a> --}}
                 </div>
 
                 <div class="list-group list-group-flush">
