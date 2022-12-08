@@ -24,8 +24,8 @@ class CreateBiomedicalEquipmentTable extends Migration
             $table->timestamps();
 
             //Foregn Keys
-            $table->foreign('risk_factor_id')->references('id')->on('risk_factors');
-            $table->foreign('category_id')->references('id')->on('biomedical_equipment_categories');
+            $table->foreign('risk_factor_id')->references('id')->on('risk_factors')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('category_id')->references('id')->on('biomedical_equipment_categories')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -25,7 +25,7 @@ class CreateGroupsTable extends Migration
 
             //Foregn Keys
             $table->unsignedBigInteger('assistant_teacher')->nullable();
-            $table->foreign('assistant_teacher')->references('id')->on('users');
+            $table->foreign('assistant_teacher')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             
-            $table->foreign('career_id')->references('id')->on('careers');
+            $table->foreign('career_id')->references('id')->on('careers')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

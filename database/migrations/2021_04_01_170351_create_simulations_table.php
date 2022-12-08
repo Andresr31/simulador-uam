@@ -22,13 +22,13 @@ class CreateSimulationsTable extends Migration
 
             //Foregn Keys
             $table->unsignedBigInteger('hopital_room_id');
-            $table->foreign('hopital_room_id')->references('id')->on('hospital_rooms');
+            $table->foreign('hopital_room_id')->references('id')->on('hospital_rooms')->onDelete('cascade')->onUpdate('cascade');
 
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
             $table->unsignedBigInteger('report_id');
-            $table->foreign('report_id')->references('id')->on('reports');
+            $table->foreign('report_id')->references('id')->on('reports')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });

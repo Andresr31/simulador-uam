@@ -19,10 +19,10 @@ class CreateEquipmentRoomRequiredsTable extends Migration
             $table->enum('required',['TRUE','FALSE','OPTIONAL']);
             //Foregn Keys
             $table->unsignedBigInteger('hospital_room_id');
-            $table->foreign('hospital_room_id')->references('id')->on('hospital_rooms');
+            $table->foreign('hospital_room_id')->references('id')->on('hospital_rooms')->onDelete('cascade')->onUpdate('cascade');
 
             $table->unsignedBigInteger('biomedical_equipment_id');
-            $table->foreign('biomedical_equipment_id')->references('id')->on('biomedical_equipment');
+            $table->foreign('biomedical_equipment_id')->references('id')->on('biomedical_equipment')->onDelete('cascade')->onUpdate('cascade');
 
             $table->string('feedback')->nullable();
             $table->timestamps();

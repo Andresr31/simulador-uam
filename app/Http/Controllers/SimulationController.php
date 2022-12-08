@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\BiomedicalEquipment;
+use App\EquipmentRoomRequired;
 use App\HospitalRoom;
 use App\RiskFactor;
 use App\Simulation;
@@ -83,21 +84,30 @@ class SimulationController extends Controller
      */
     public function show(Simulation $simulation)
     {
+        // dd($simulation->report->simulation);
+        $requiredEquipments= EquipmentRoomRequired::where('hospital_room_id',$simulation->hopital_room_id)->where('required','TRUE')->get();
+        // dd($requiredEquipments->where('id',7)->first());
         $simulation->report->pre = json_decode($simulation->report->pre);
         $simulation->report->simulation = json_decode($simulation->report->simulation);
         
+        $correctItems = []; //Elementos colocados correctamente
         $missingItems = []; //elemento que faltaron
-        $leftoverItems = []; //elementos que sobrarion
+        // $leftoverItems = []; //elementos que sobraron
         $failedItems = []; //elementos que fallaron
+        $allItems = []; //Todos los elementos
         foreach($simulation->report->simulation as $resp){
             // dd($simulation->report->simulation);
             $equipment = BiomedicalEquipment::find($resp->biomedical_equipment_id);
-            if($equipment->equipmentRoom->required == "TRUE" && $resp->required == "false"){
-                $missingItems[] = $equipment;
-            }
-            if($equipment->equipmentRoom->required == "FALSE" && $resp->required == "true"){
-                $leftoverItems[] = $equipment;
-            }
+            // dd($equipment->id);
+            // dd($requiredEquipments->where('id',$equipment->id)->first());
+            
+            // dd($correctItems);
+            // if($equipment->equipmentRoom->required == "TRUE" && $resp->required == "false"){
+            //     $missingItems[] = $equipment;
+            // }
+            // if($equipment->equipmentRoom->required == "FALSE" && $resp->required == "true"){
+            //     $leftoverItems[] = $equipment;
+            // }
             $equipment->myRisk = RiskFactor::find($resp->risk);
 
             if($equipment->myRisk->id == $equipment->risk_factor_id){
@@ -108,10 +118,32 @@ class SimulationController extends Controller
                 $equipment->responseMessage = "Respuesta incorrecta";
             }
 
-            $failedItems[] = $equipment;
+            if(!empty($requiredEquipments->where('id',$equipment->id)->first()) || $resp->required == "true"){
+                $correctItems[] = $equipment;
+            }else{
+                $failedItems[] = $equipment;
+            }
+
+            $allItems[] = $equipment;
         }
+
+        foreach($requiredEquipments as $requiredEquipment){
+            $band = false;
+            for ($i=0; $i < count($simulation->report->simulation); $i++) { 
+                if($requiredEquipment->id == $simulation->report->simulation[0]->biomedical_equipment_id){
+                    $band = true;
+                }
+            }
+            if(!$band){
+                $missingItems[] = BiomedicalEquipment::find($requiredEquipment->biomedical_equipment_id);
+            }
+        }
+        // dd($failedItems);
+
         $simulation->missingItems = $missingItems;
-        $simulation->leftoverItems = $leftoverItems;
+        $simulation->correctItems = $correctItems;
+        $simulation->allItems = $allItems;
+        // $simulation->leftoverItems = $leftoverItems;
         $simulation->failedItems = $failedItems;
         $simulation->user = User::find($simulation->user_id);
         $simulation->hospital_room = HospitalRoom::find($simulation->hopital_room_id);

@@ -77,16 +77,16 @@
                                         </div>
                                     </div>
                                     <div class="card">
-                                        <div class="card-header bg-secondary" id="headingTwo">
+                                        <div class="card-header bg-secondary" id="headingCorrect">
                                             <h2 class="mb-0">
                                                 <button class="btn btn-link btn-block text-left text-white collapsed"
-                                                    type="button" data-toggle="collapse" data-target="#collapseTwo"
-                                                    aria-expanded="false" aria-controls="collapseTwo">
-                                                    Elementos que sobraron
+                                                    type="button" data-toggle="collapse" data-target="#collapseCorrect"
+                                                    aria-expanded="false" aria-controls="collapseCorrect">
+                                                    Elementos colocados correctamente
                                                 </button>
                                             </h2>
                                         </div>
-                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                        <div id="collapseCorrect" class="collapse" aria-labelledby="headingCorrect"
                                             data-parent="#accordionSimulation">
                                             <div class="card-body">
                                                 <table class="table table-striped">
@@ -96,9 +96,40 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($simulation->leftoverItems as $leftoverItem)
+                                                        @foreach ($simulation->correctItems as $correctItem)
                                                             <tr>
-                                                                <td>{{$leftoverItem->name}}</td>
+                                                                <td>{{$correctItem->name}}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header bg-secondary" id="headingFailed">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link btn-block text-left text-white" type="button"
+                                                    data-toggle="collapse" data-target="#collapseFailed" aria-expanded="false"
+                                                    aria-controls="collapseFailed">
+                                                    Elementos colocados incorrectamente
+                                                </button>
+                                            </h2>
+                                        </div>
+
+                                        <div id="collapseFailed" class="collapse" aria-labelledby="headingFailed"
+                                            data-parent="#accordionSimulation">
+                                            <div class="card-body">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                          <th scope="col">Equipo biomedico</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($simulation->failedItems as $failedItem)
+                                                            <tr>
+                                                                <td>{{$failedItem->name}}</td>
                                                             </tr>
                                                         @endforeach
                                                     </tbody>
@@ -129,12 +160,12 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($simulation->failedItems as $failedItem)
+                                                        @foreach ($simulation->allItems as $item)
                                                             <tr>
-                                                                <td>{{$failedItem->name}}</td>
-                                                                <td>{{$failedItem->myRisk->name}}</td>
-                                                                <td>{{$failedItem->responseMessage}}</td>
-                                                                <td>{{!$failedItem->response ? $failedItem->equipmentRoom->feedback : ""}}</td>
+                                                                <td>{{$item->name}}</td>
+                                                                <td>{{$item->myRisk->name}}</td>
+                                                                <td>{{$item->responseMessage}}</td>
+                                                                <td>{{!$item->response ? $item->equipmentRoom->feedback : ""}}</td>
                                                             </tr>
                                                         @endforeach
                                                     </tbody>

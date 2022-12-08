@@ -23,13 +23,13 @@ class CreateHospitalRoomsTable extends Migration
 
             //Foregn Keys
             $table->unsignedBigInteger('floor_id');
-            $table->foreign('floor_id')->references('id')->on('floors');
+            $table->foreign('floor_id')->references('id')->on('floors')->onDelete('cascade')->onUpdate('cascade');
 
             $table->unsignedBigInteger('celling_id');
-            $table->foreign('celling_id')->references('id')->on('cellings');
+            $table->foreign('celling_id')->references('id')->on('cellings')->onDelete('cascade')->onUpdate('cascade');
 
             $table->unsignedBigInteger('wall_id');
-            $table->foreign('wall_id')->references('id')->on('walls');
+            $table->foreign('wall_id')->references('id')->on('walls')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });
