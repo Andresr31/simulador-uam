@@ -20,7 +20,7 @@
 
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('vendor/aos/aos.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('vendor/aos/aos.css') }}" rel="stylesheet"> --}}
     {{-- <link href="{{ asset('vendor/remixicon/remixicon.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet"> --}}
@@ -451,11 +451,11 @@
             class="bi bi-arrow-up-short"></i></a>
 
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
-    <script src="{{ asset('vendor/aos/aos.js') }}"></script>
-    <script src="{{ asset('vendor/swiper/swiper-bundle.min.js') }}"></script>
-    <script src="{{ asset('vendor/purecounter/purecounter.js') }}"></script>
-    <script src="{{ asset('vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset('vendor/glightbox/js/glightbox.min.js') }}"></script>
+    {{-- <script src="{{ asset('vendor/aos/aos.js') }}"></script> --}}
+    {{-- <script src="{{ asset('vendor/swiper/swiper-bundle.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('vendor/purecounter/purecounter.js') }}"></script> --}}
+    {{-- <script src="{{ asset('vendor/isotope-layout/isotope.pkgd.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('vendor/glightbox/js/glightbox.min.js') }}"></script> --}}
     <script src="{{ asset('js/welcome/main.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
