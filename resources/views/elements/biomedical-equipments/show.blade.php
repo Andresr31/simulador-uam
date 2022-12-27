@@ -11,6 +11,7 @@
             <h3 class="d-inline align-middle">Ver equipo</h3>
             <hr />
 
+
             <div>
                 <div class="row justify-content-center my-5">
                     <div class="col-lg-7 col-md-8">
@@ -26,7 +27,7 @@
                                         <h6 class="card-subtitle font-weight-bold">Plan de mantenimiento</h6>
                                         <p class="card-text ml-2 mb-3">{{ $biomedicalEquipment->maintenance_plan }}</p>
                                         <h6 class="card-subtitle font-weight-bold">Factor de riesgo</h6>
-                                        <p class="card-text ml-2 mb-3">{{ $biomedicalEquipment->riskFactor->name }}</p>
+                                        <p class="card-text ml-2 mb-3">{{ $biomedicalEquipment->risk_factor->name }}</p>
                                         <h6 class="card-subtitle font-weight-bold">Categoria</h6>
                                         <p class="card-text ml-2 mb-3">{{ $biomedicalEquipment->category->name }}</p>
 
