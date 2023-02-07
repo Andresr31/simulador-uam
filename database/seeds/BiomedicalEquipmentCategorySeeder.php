@@ -14,9 +14,9 @@ class BiomedicalEquipmentCategorySeeder extends Seeder
     public function run()
     {
         DB::table('biomedical_equipment_categories')->delete();
-        BiomedicalEquipmentCategory::create(['name' => 'Sillas','description' => 'No registrada']);
-        BiomedicalEquipmentCategory::create(['name' => 'Camas','description' => 'No registrada']);
-        BiomedicalEquipmentCategory::create(['name' => 'Mesas/Estantería','description' => 'No registrada']);
+        BiomedicalEquipmentCategory::create(['name' => 'Mobiliario hospitalario','description' => 'No registrada']);
+        BiomedicalEquipmentCategory::create(['name' => 'Dispositivos médicos','description' => 'No registrada']);
+        BiomedicalEquipmentCategory::create(['name' => 'Equipos biomédicos','description' => 'No registrada']);
         BiomedicalEquipmentCategory::create(['name' => 'Equipos médicos','description' => 'No registrada']);
         BiomedicalEquipmentCategory::create(['name' => 'Iluminación','description' => 'No registrada']);
         
