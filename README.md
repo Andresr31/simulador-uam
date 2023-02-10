@@ -14,3 +14,6 @@
 ** Configuracion laravel passport
 - php artisan cache:clear
 - php artisan config:cache
+
+** Actualizar base de datos
+ - php artisan migrate:fresh --seed
