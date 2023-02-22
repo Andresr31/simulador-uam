@@ -124,12 +124,14 @@
                                                     <thead>
                                                         <tr>
                                                           <th scope="col">Equipo biomedico</th>
+                                                          <th scope="col">Retroalimentación</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($simulation->failedItems as $failedItem)
                                                             <tr>
                                                                 <td>{{$failedItem->name}}</td>
+                                                                <td>{{!$failedItem->response ? $failedItem->equipmentRoom->feedback : ""}}</td>
                                                             </tr>
                                                         @endforeach
                                                     </tbody>
@@ -156,7 +158,7 @@
                                                           <th scope="col">Equipo biomedico</th>
                                                           <th scope="col">Factor de riesgo</th>
                                                           <th scope="col">Respuesta</th>
-                                                          <th scope="col">Retroalimentación</th>
+                                                          
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -165,7 +167,6 @@
                                                                 <td>{{$item->name}}</td>
                                                                 <td>{{$item->myRisk->name}}</td>
                                                                 <td>{{$item->responseMessage}}</td>
-                                                                <td>{{!$item->response ? $item->equipmentRoom->feedback : ""}}</td>
                                                             </tr>
                                                         @endforeach
                                                     </tbody>
