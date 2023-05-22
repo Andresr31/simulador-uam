@@ -411,6 +411,11 @@
     </div>
     <div class="container text-center">
         <div class="credits mr-auto d-inline">
+            Carlos Andrés Rojas Parra: carlos.rojasp@autonoma.edu.co
+        </div>
+    </div>
+    <div class="container text-center">
+        <div class="credits mr-auto d-inline">
             Cristian Castrillón Arias: cristian.castrillon@autonoma.edu.co
         </div>
     </div>

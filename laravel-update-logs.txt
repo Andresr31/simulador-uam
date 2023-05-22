@@ -1,0 +1,12 @@
+Actualización Laravel 8 - 9
+
+- Error: Conclusion: don't install fruitcake/laravel-cors v1.0.3 (conflict analysis result)
+	Solución: https://github.com/fruitcake/laravel-cors 
+
+- Error: illuminate/database[v6.0.0, ..., v6.19.1] require php ^7.2 -> your php version (8.1.10) does not satisfy that requiremen - Error with version of spatie/laravel-permission v4.0 -> v5.2
+	Solución: https://spatie.be/docs/laravel-permission/v5/installation-laravel
+
+
+- Error: Undefined constant Illuminate\Http\Request::HEADER_X_FORWARDED_ALL
+	Solución: https://laravel.com/docs/9.x/upgrade#upgrade-9.0 
+		Section Trusted Proxies
