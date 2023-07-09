@@ -77,8 +77,37 @@
                                     @enderror
                                 </div>
                             </div>
-
                             <div class="form-group row">
+                                <label for="semester"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Semestre') }}</label>
+
+                                <div class="col-md-6">
+                                    {{-- <input id="semester" type="text" class="form-control @error('semester') is-invalid @enderror" name="semester" value="{{ old('name') }}" required autofocus> --}}
+
+                                    <select id="semester" class="form-control @error('semester') is-invalid @enderror"
+                                        name="semester" required>
+
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+
+
+                                    </select>
+                                    @error('semester')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            {{-- <div class="form-group row">
                                 <label for="semester"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Semestre') }}</label>
 
@@ -93,7 +122,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="form-group row">
                                 <label for="email"
